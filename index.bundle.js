@@ -5287,6 +5287,10 @@ function getHealth(img) {
         // Get starting pixel for Health image, to be used to grab the health
         let healthBarPosition = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.getPosition(img, imgToFind, 159, 2, 68, 14);
 
+        let buffer = img.toData(0, 0, 68, 14);
+        let health = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Health");
+
+        return Number(health);
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);
 
@@ -5344,7 +5348,7 @@ async function loadImages() {
 
     // The numbers used for Phase and Enrage. If Jagex changes the font, then this needs to be updated.
     imgHealthNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
-        'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACfUExURd/NqO3ast/MqNC/nnBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbGBZSt7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nQAAAIxU+xQAAAA1dFJOU/////////////////////////////////////////////////////////////////////8AfLXQCgAAAAlwSFlzAAAOwgAADsIBFShKgAAAAT5JREFUOE+NkwlSwzAMRU1BLIG0LDU2ayk7pUAB3f9saIvskszA60Rfdqxv2ZMGLIQNSxBHpv9hk56h9YF+uKWeIxDhGdy2HMt2hR1TZnePaPZ14QHPcHk7JlWLOiqedwnQ6oqJqcCvvHEpgEO3PpIoueKOpnjccOxNO3CiOpEWYOrWUhclV3q141MR6Jvq2rZ7IUqGIelwrSXGtskqzJkpm8fzCxsVmqw18ZJCImu1gyuJkq9Turw2xTTDdEM6t1d+2FvNpndUdu9dP3CsL8SBmSWtKcaI8MiJntWQfeiKFXjCkJ8le5HI4TdpQYE8YnSjBQJ3jfGVo92ZfiHaqRDikiW/cRy0rm7boHI6LwHvHO2sUpy5DyMM+/1JVWV7y27xQwcM/XW666loViuWuQycT3p8qlzzl+ny2xIB8QfBaMJASzlxZQAAAABJRU5ErkJggg=='
+        'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcUExURe3ast/MqNC/nt/NqHBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbN7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nQAAADUbNEgAAAA0dFJOU////////////////////////////////////////////////////////////////////wBLVyJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABOUlEQVQ4T42TB1PDMAyFzRAjtGXUJMxSNqVAAf3//4bGi+KS3MF3Fz156Fn2tYkLusEG9D9syje0P/EW8zY8yUVmeAd5cVzHLlTZ2xeqg2Kjlo/GMuEWZXQibxOS3QUTqKFL0bgV0GFYH1m03AlHKB9XGnvTAZ24TqwFmoa11WXLnV7t+NSE+qa+d9QumIphqn241pKCYxoX5Qyq5vn8AqOOqvGafCmhFmu3oyuLlq/TdXkN5XrG9Y3oHEtx2VvPpndSdh9dP2gsHySgGZIRlHNmetTE7wrsHHlih544Nc+WvVjU8Jt6IUE8cg6jBZN2zflVI97MfyHeqZHyUqV50zhoXbw2kHK5r0DvGnFXK260D5CG/f6kqMLZdlr+8IEi/6H2eQqq1UplboPgU76Y6p75C7r8RmIw/wDV2r7vDkndRgAAAABJRU5ErkJggg=='
     );
     
     // Split the numbers into a dataset with each individual number
