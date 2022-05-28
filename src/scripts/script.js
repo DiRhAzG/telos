@@ -15,7 +15,6 @@ let z = {
     currentSpecPercent: 0,
     currentHealth: 0,
     startingHealth: 0,
-    currentStreak: 0,
     phaseHealth: [],
     fontHealth: [],
     warning: ""
@@ -43,7 +42,8 @@ let attackImages = [
 
 let settings = {
     showMouseTooltip: false,
-    refreshRate: 200
+    refreshRate: 200,
+    streakCount: 0
 }
 
 /* Main function to run everything else */
@@ -123,7 +123,7 @@ export function updateInterface() {
     }
 
     element.warning.innerHTML = z.warning;
-    element.streak.innerHTML = z.currentStreak;
+    element.streak.innerHTML = localStorage.streakCount;
 
     if (window.alt1) {
         if (settings.showMouseTooltip == "true") {
@@ -169,7 +169,6 @@ export function reset() {
     z.currentSpecPercent = 0;
     z.currentHealth = 0;
     z.startingHealth = 0;
-    z.currentStreak = 0;
     z.phaseHealth = [];
     z.fontHealth = [];
     z.warning = "";
@@ -329,10 +328,12 @@ let checkStreak = (img) => {
     // console.log("Phase: " + z.currentPhase.toString());
 };
 
-/* Set the current Streak */
+/* Set the current Streak. Could probably clean this up. */
 let setStreak = (streak) => {
     if (streak != undefined && streak > 0) {
-        z.currentStreak = streak;
+        localStorage.streakCount = streak;
+        $("#streak-count").val(streak);
+        settings.streakCount = streak;
     }
 };
 

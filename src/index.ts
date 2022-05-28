@@ -24,22 +24,35 @@ let element = {
 
 let settings = {
     showMouseTooltip: false,
-    refreshRate: 200
+    refreshRate: 200,
+	streakCount: 0
 }
 
 window.onload = async function start() {
 	
+	if (localStorage.showMouseTooltip == "true") {
+		$("#mouse-tooltip").prop("checked", true)
+		settings.showMouseTooltip = localStorage.showMouseTooltip;
+	} else {
+		localStorage.showMouseTooltip == "false";
+	}
+
+	if (localStorage.refreshRate) {
+		$("#refresh-rate").val(localStorage.refreshRate);
+		settings.refreshRate = localStorage.refreshRate;
+	} else {
+		localStorage.refreshRate = 200;
+	}
+
+	if (localStorage.streakCount) {
+		$("#streak-count").val(localStorage.streakCount);
+		$("#streak").html(localStorage.streakCount);
+		settings.streakCount = localStorage.streakCount;
+	} else {
+		localStorage.streakCount == 0;
+	}
+
 	if (window.alt1) {
-		if (localStorage.getItem("showMouseTooltip") == "true") {
-			$("#mouse-tooltip").prop("checked", true)
-			settings.showMouseTooltip = localStorage.showMouseTooltip;
-		}
-	
-		if (localStorage.getItem("refreshRate")) {
-			$("#refresh-rate").val(localStorage.getItem("refreshRate"));
-			settings.refreshRate = localStorage.refreshRate;
-		}
-		
 		main.updateSettings(settings);
 		main.start(element);
 	}
@@ -102,4 +115,9 @@ $("#refresh-rate").change(function () {
 	
 	settings.refreshRate = localStorage.refreshRate;
 	main.updateSettings(settings);
+});
+
+$("#streak-count").change(function () {
+	localStorage.streakCount = $(this).val();
+	$("#streak").html(localStorage.streakCount);
 });

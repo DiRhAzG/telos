@@ -5689,7 +5689,6 @@ let z = {
     currentSpecPercent: 0,
     currentHealth: 0,
     startingHealth: 0,
-    currentStreak: 0,
     phaseHealth: [],
     fontHealth: [],
     warning: ""
@@ -5717,7 +5716,8 @@ let attackImages = [
 
 let settings = {
     showMouseTooltip: false,
-    refreshRate: 200
+    refreshRate: 200,
+    streakCount: 0
 }
 
 /* Main function to run everything else */
@@ -5797,7 +5797,7 @@ function updateInterface() {
     }
 
     element.warning.innerHTML = z.warning;
-    element.streak.innerHTML = z.currentStreak;
+    element.streak.innerHTML = localStorage.streakCount;
 
     if (window.alt1) {
         if (settings.showMouseTooltip == "true") {
@@ -5843,7 +5843,6 @@ function reset() {
     z.currentSpecPercent = 0;
     z.currentHealth = 0;
     z.startingHealth = 0;
-    z.currentStreak = 0;
     z.phaseHealth = [];
     z.fontHealth = [];
     z.warning = "";
@@ -6003,10 +6002,12 @@ let checkStreak = (img) => {
     // console.log("Phase: " + z.currentPhase.toString());
 };
 
-/* Set the current Streak */
+/* Set the current Streak. Could probably clean this up. */
 let setStreak = (streak) => {
     if (streak != undefined && streak > 0) {
-        z.currentStreak = streak;
+        localStorage.streakCount = streak;
+        $("#streak-count").val(streak);
+        settings.streakCount = streak;
     }
 };
 
@@ -6722,18 +6723,33 @@ let element = {
 };
 let settings = {
     showMouseTooltip: false,
-    refreshRate: 200
+    refreshRate: 200,
+    streakCount: 0
 };
 window.onload = async function start() {
+    if (localStorage.showMouseTooltip == "true") {
+        _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
+        settings.showMouseTooltip = localStorage.showMouseTooltip;
+    }
+    else {
+        localStorage.showMouseTooltip == "false";
+    }
+    if (localStorage.refreshRate) {
+        _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").val(localStorage.refreshRate);
+        settings.refreshRate = localStorage.refreshRate;
+    }
+    else {
+        localStorage.refreshRate = 200;
+    }
+    if (localStorage.streakCount) {
+        _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak-count").val(localStorage.streakCount);
+        _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
+        settings.streakCount = localStorage.streakCount;
+    }
+    else {
+        localStorage.streakCount == 0;
+    }
     if (window.alt1) {
-        if (localStorage.getItem("showMouseTooltip") == "true") {
-            _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
-            settings.showMouseTooltip = localStorage.showMouseTooltip;
-        }
-        if (localStorage.getItem("refreshRate")) {
-            _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").val(localStorage.getItem("refreshRate"));
-            settings.refreshRate = localStorage.refreshRate;
-        }
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);
     }
@@ -6788,6 +6804,10 @@ _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").change(function () {
     localStorage.refreshRate = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();
     settings.refreshRate = localStorage.refreshRate;
     _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
+});
+_js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak-count").change(function () {
+    localStorage.streakCount = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
 });
 
 })();
