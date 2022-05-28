@@ -5800,7 +5800,7 @@ function updateInterface() {
     element.streak.innerHTML = z.currentStreak;
 
     if (window.alt1) {
-        if (settings.showMouseTooltip) {
+        if (settings.showMouseTooltip == "true") {
             alt1.setTooltip(attack.nextAttack);
         } else {
             alt1.setTooltip("");
