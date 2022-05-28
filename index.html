@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="nis">
+		<div class="container tab-menu">
+			<div class="row">
+				<div class="col">
+					<div id="tabcontainer">
+						<div id="telos-tab" class="contenttab lefttab activetab">Telos</div>
+						<div id="settings-tab" class="contenttab lefttab">Settings</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="telos-content">
+			<table class="test">
+				<tr>
+					<td class="lbl-top">Special Attack:</td>
+					<td class="val-top" id="special">0%</td>
+				</tr>
+				<tr>
+					<td class="lbl-top" id="next-phase">Next Phase:</td>
+					<td class="val-top" id="health">300,000</td>
+				</tr>
+				<tr>
+					<td class="lbl-top">Current Attack:</td>
+					<td class="val-top" id="current-attack">N/A</td>
+				</tr>
+			</table>
+			<br>
+			<div class="lbl-attack">
+				Next Attack: 
+			</div>
+			<div id="next-attack">Tendrils</div>
+			<img id="suggestion" src="./src/images/deflect_magic.png" />
+
+			<br>
+
+			<div id="warning">
+							
+			</div>
+
+			<table class="stats">
+				<tr>
+					<td class="lbl-bottom col-phase">
+						Phase
+					</td>
+					  <td class="lbl-bottom col-enrage">
+						Enrage
+					</td>
+					<td class="lbl-bottom col-streak">
+						Streak
+					</td>
+				</tr>
+				<tr>
+					<td class="value col-phase">
+						<span id="phase">1</span>
+					</td>
+					<td class="value col-enrage">
+						<span id="enrage">0%</span>
+					</td>
+					<td class="value col-streak">
+						<span id="streak">N/A</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="container matSection tabcontent" id="settings-content" style="display:none;">
+			<div class="row mat-header">
+				<div class="col hide col-header">Hide</div>
+				<div class="col-5 sort col-header pointer" data-sort='level' data-type='material'>
+					Materials
+				</div>
+				<div class="img-col col-header">
+					 
+				</div>
+			</div>
+			<div class="row scroll">
+				<div class="col mats">
+				</div>
+			</div>
+		</div>
+
+		<script src="./index.bundle.js"></script>
+	</body>
+</html>
