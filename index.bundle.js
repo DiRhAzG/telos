@@ -5929,8 +5929,8 @@ let calculateHealth = () => {
     z.p4Health.push(p4Health * 0.25);
     z.p4Health.push(0);
 
-    console.log(z.phaseHealth);
-    console.log(z.p4Health);
+    // console.log(z.phaseHealth);
+    // console.log(z.p4Health);
 }
 
 /* Find the Chat Box */
