@@ -61,7 +61,7 @@ export async function start(e) {
 };
 
 function loopChecks() {
-    img = a1lib.captureHoldFullRs();
+    let img = a1lib.captureHoldFullRs();
 
     if (!foundChat) {
         findChatBox(img);

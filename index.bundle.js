@@ -5735,7 +5735,7 @@ async function start(e) {
 };
 
 function loopChecks() {
-    img = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.captureHoldFullRs();
+    let img = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.captureHoldFullRs();
 
     if (!foundChat) {
         findChatBox(img);
