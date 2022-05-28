@@ -35,7 +35,7 @@ let attackImages = [
     { name: "Anima", image: "./src/images/debilitate.png" },
     { name: "Minions", image: "./src/images/minions.png" },
     { name: "Instant Kill", image: "./src/images/immortality.png" },
-    { name: "So Much Power", image: "./src/images/.png" }
+    { name: "So Much Power", image: "./src/images/smp.png" }
 ]
 
 /* Main function to run everything else */
