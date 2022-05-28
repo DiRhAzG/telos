@@ -125,9 +125,9 @@ export function updateInterface() {
     element.warning.innerHTML = z.warning;
     element.streak.innerHTML = z.currentStreak;
 
-    // if (window.alt1) {
-    //     alt1.setTooltip(attack.nextAttack);
-    // }
+    if (window.alt1 && settings.showMouseTooltip) {
+        alt1.setTooltip(attack.nextAttack);
+    }
 }
 
 /* Used for testing, using pasted screenshots */
