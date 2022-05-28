@@ -4832,16 +4832,16 @@ let phase2All = [
     { id: 0, name: "Tendrils", chat: "Telos: Your anima will return to the source!", prev: [ "Hold Still" ], test: "p2t" },
     { id: 1, name: "Magic Onslaught", chat: "Shit game doesn't have chat for this.", prev: [ "Tendrils" ], test: "p2mo" },
     { id: 2, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Uppercut" ], test: "p2hs" },
-    { id: 3, name: "Virus", chat: "Shit game doesn't have chat for this.", prev: [], test: "p2v" },
+    { id: 3, name: "Black Virus", chat: "Shit game doesn't have chat for this.", prev: [], test: "p2v" },
     { id: 4, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [], test: "p2uc" }
 ]
 
 let phase2;
 
 let phase3All = [
-    { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Hold Still", "Virus", "Uppercut" ], test: "p3uc" },
+    { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Hold Still", "Black Virus", "Uppercut" ], test: "p3uc" },
     { id: 1, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Tendrils" ], test: "p3hs" },
-    { id: 2, name: "Virus", chat: "Shit game doesn't have chat for this.", prev: [ "Magic Onslaught" ], test: "p3v" }
+    { id: 2, name: "Red Virus", chat: "Shit game doesn't have chat for this.", prev: [ "Magic Onslaught" ], test: "p3v" }
 ]
 
 let phase3;
@@ -4849,7 +4849,7 @@ let phase3;
 let phase4 = [
     { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Uppercut" ], test: "p4uc" },
     { id: 1, name: "Anima", chat: "Telos: Let the anima consume you!", prev: [ "Hold Still" ], test: "p4a" },
-    { id: 2, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Virus" ], test: "p4hs" }
+    { id: 2, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Red Virus" ], test: "p4hs" }
 ]
 
 let phase5 = [
@@ -4990,13 +4990,13 @@ function checkSpecialAttacks(phase, specPercent, img) {
             }
         }
     } else if (phase == 3) {
-        if (nextAttack == "Virus") {
+        if (nextAttack == "Black Virus") {
             // Try to find Virus debuff image
             let redVirus = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.findSubimage(img, imgRedVirus);
             
             // If Virus debuff is found, then Virus has begun
             if (redVirus.length > 0) {
-                currentAttack = "Virus";
+                currentAttack = "Black Virus";
                 nextAttack = "Uppercut";
 
                 return true;
@@ -5010,8 +5010,18 @@ function checkSpecialAttacks(phase, specPercent, img) {
             let blackVirus = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.findSubimage(img, imgBlackVirus);
             
             // If Virus debuff is found, then Virus has begun
-            if (greenVirus.length > 0 || redVirus.length > 0 || blackVirus.length > 0) {
-                currentAttack = "Virus";
+            if (greenVirus.length > 0) {
+                currentAttack = "Green Virus";
+                nextAttack = "Instant Kill";
+
+                return true;
+            } else if (redVirus.length > 0) {
+                currentAttack = "Red Virus";
+                nextAttack = "Instant Kill";
+
+                return true;
+            } else if (blackVirus.length > 0) {
+                currentAttack = "Black Virus";
                 nextAttack = "Instant Kill";
 
                 return true;
@@ -5039,7 +5049,10 @@ function checkChatAttacks(phase, line) {
             break;
         case 4:
             phaseAttacks = phase4;
-            break; 
+            break;
+        case 5:
+            phaseAttacks = phase5;
+            break;
         default:
             break;
     }
@@ -5072,7 +5085,10 @@ function checkPhaseAttacks(phase) {
             break;
         case 4:
             phaseAttacks = phase4;
-            break; 
+            break;
+        case 5:
+            phaseAttacks = phase5;
+            break;
         default:
             return false;
     }
@@ -5665,6 +5681,22 @@ let element;
 let chatLines;
 let attack = { currentAttack: 'N/A', nextAttack: 'Tendril' };
 
+let attackImages = [
+    {
+        name: "Tendrils", image: "./src/images/tsunami.png",
+        name: "Uppercut", image: "./src/images/surge.png",
+        name: "Hold Still", image: "./src/images/freedom_anticipate.png",
+        name: "Magic Onslaught", image: "./src/images/deflect_magic.png",
+        name: "Black Virus", image: "./src/images/black_stream.png",
+        name: "Green Virus", image: "./src/images/green_stream.png",
+        name: "Red Virus", image: "./src/images/red_stream.png",
+        name: "Anima", image: "./src/images/debilitate.png",
+        name: "Minions", image: "./src/images/minions.png",
+        name: "Instant Kill", image: "./src/images/immortality.png",
+        name: "So Much Power", image: "./src/images/.png",
+    }
+]
+
 /* Main function to run everything else */
 async function start(img, e) {
     try {
@@ -5715,7 +5747,9 @@ function updateInterface() {
 
     element.currentAttack.innerHTML = attack.currentAttack.toString();
     element.nextAttack.innerHTML = attack.nextAttack.toString();
-    element.suggestion.src = "./src/images/surge.png";
+
+    let suggestionImg = attackImages.find(i => i.name == element.nextAttack).image;
+    element.suggestion.src = suggestionImg;
 
     if (z.currentPhase == 4) {
         element.nextPhase.innerHTML = "Next Font:"

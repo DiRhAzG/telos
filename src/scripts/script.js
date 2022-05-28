@@ -24,6 +24,22 @@ let element;
 let chatLines;
 let attack = { currentAttack: 'N/A', nextAttack: 'Tendril' };
 
+let attackImages = [
+    {
+        name: "Tendrils", image: "./src/images/tsunami.png",
+        name: "Uppercut", image: "./src/images/surge.png",
+        name: "Hold Still", image: "./src/images/freedom_anticipate.png",
+        name: "Magic Onslaught", image: "./src/images/deflect_magic.png",
+        name: "Black Virus", image: "./src/images/black_stream.png",
+        name: "Green Virus", image: "./src/images/green_stream.png",
+        name: "Red Virus", image: "./src/images/red_stream.png",
+        name: "Anima", image: "./src/images/debilitate.png",
+        name: "Minions", image: "./src/images/minions.png",
+        name: "Instant Kill", image: "./src/images/immortality.png",
+        name: "So Much Power", image: "./src/images/.png",
+    }
+]
+
 /* Main function to run everything else */
 export async function start(img, e) {
     try {
@@ -74,7 +90,9 @@ export function updateInterface() {
 
     element.currentAttack.innerHTML = attack.currentAttack.toString();
     element.nextAttack.innerHTML = attack.nextAttack.toString();
-    element.suggestion.src = "./src/images/surge.png";
+
+    let suggestionImg = attackImages.find(i => i.name == element.nextAttack).image;
+    element.suggestion.src = suggestionImg;
 
     if (z.currentPhase == 4) {
         element.nextPhase.innerHTML = "Next Font:"
