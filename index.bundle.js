@@ -5689,6 +5689,7 @@ let attackImages = [
     { name: "Black Virus", image: "./src/images/black_stream.png" },
     { name: "Green Virus", image: "./src/images/green_stream.png" },
     { name: "Red Virus", image: "./src/images/red_stream.png" },
+    { name: "Virus", image: "./src/images/blue_stream.png" },
     { name: "Anima", image: "./src/images/debilitate.png" },
     { name: "Minions", image: "./src/images/minions.png" },
     { name: "Instant Kill", image: "./src/images/immortality.png" },
