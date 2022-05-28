@@ -65,7 +65,7 @@ export function updateInterface() {
 
     if (z.phaseHealth.length > 0) {
         if (z.currentPhase == 4 && z.p4Health.length > 0) {
-            let nextFont = Math.max(z.p4Health.filter(h => h < z.currentHealth));
+            let nextFont = Math.max(...z.p4Health.filter(h => h < z.currentHealth));
             element.health.innerHTML = numberWithCommas(nextFont);
         } else {
             element.health.innerHTML = numberWithCommas(z.phaseHealth[z.currentPhase]);
