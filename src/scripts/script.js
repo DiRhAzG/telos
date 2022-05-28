@@ -41,41 +41,50 @@ let attackImages = [
     { name: "So Much Power", image: "./src/images/smp.png" }
 ]
 
+let settings = {
+    showMouseTooltip: false,
+    refreshRate: 200
+}
+
 /* Main function to run everything else */
-export async function start(img, e) {
+export async function start(e) {
     try {
         reset();
         element = e;
         await loadImages();
         
-        // Main timer that will repeatedly call the functions
-        setInterval(() => {
-            img = a1lib.captureHoldFullRs();
-
-            if (!foundChat) {
-                findChatBox(img);
-            } else {
-                readChatBox(img);
-            }
-
-            if (z.currentEnrage < 0) {
-                checkEnrage(img);
-            }
-
-            if (z.currentHealth == 0) {
-                checkStreak(img);
-            }
-
-            checkPhase(img);
-            checkSpecPercent(img);
-            checkHealth(img);
-            getNextAttack(img);
-            updateInterface();
-        }, 200)
+        // Main timer that will repeatedly run the other checks
+        setTimeout(loopChecks, settings.refreshRate);
     } catch (ex) {
         console.log(ex);
     }
 };
+
+function loopChecks() {
+    img = a1lib.captureHoldFullRs();
+
+    if (!foundChat) {
+        findChatBox(img);
+    } else {
+        readChatBox(img);
+    }
+
+    if (z.currentEnrage < 0) {
+        checkEnrage(img);
+    }
+
+    if (z.currentHealth == 0) {
+        checkStreak(img);
+    }
+
+    checkPhase(img);
+    checkSpecPercent(img);
+    checkHealth(img);
+    getNextAttack(img);
+    updateInterface();
+
+    setTimeout(loopChecks, settings.refreshRate);
+}
 
 export function updateInterface() {
     element.phase.innerHTML = z.currentPhase.toString();
@@ -150,7 +159,7 @@ export function setSettingsTab() {
 	return Interface.setSettingsTab();
 };
 
-export let reset = () => {
+export function reset() {
     z.currentPhase = 1;
     z.currentEnrage = -1;
     z.currentSpecPercent = 0;
@@ -376,4 +385,9 @@ let debug = () => {
         }
 
     }
+}
+
+export function updateSettings(s) {
+    settings.showMouseTooltip = s.showMouseTooltip;
+    settings.refreshRate = s.refreshRate;
 }

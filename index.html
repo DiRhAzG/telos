@@ -10,6 +10,7 @@
 				<div class="col">
 					<div id="tabcontainer">
 						<div id="telos-tab" class="contenttab lefttab activetab">Telos</div>
+						<div id="drops-tab" class="contenttab lefttab">Drops</div>
 						<div id="settings-tab" class="contenttab lefttab">Settings</div>
 					</div>
 				</div>
@@ -70,13 +71,29 @@
 			</table>
 		</div>
 
+		<div class="container tabcontent" id="drops-content" style="display:none;">
+			<table class="drops">
+				<tr>
+					<td>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+
 		<div class="container tabcontent" id="settings-content" style="display:none;">
 			<table class="settings">
 				<tr>
 					<td>
-						<div class="checkbox-header" title="Keep track of gibberish stone">
-                            Mouse Hover
-                            <input type="checkbox" class="prayer" />
+						<div class="checkbox-header" title="Display next attack on mouse">
+                            Mouse Tooltip <input type="checkbox" id="mouse-tooltip" >
+                        </div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="checkbox-header" title="Rate at which checks are done. The higher the refresh rate, the less accurate the app.">
+                            Refresh Rate <input type="number" id="refresh-rate" min="100" max="2000" value="200">
                         </div>
 					</td>
 				</tr>

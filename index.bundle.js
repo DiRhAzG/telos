@@ -5659,7 +5659,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "setTelosTab": () => (/* binding */ setTelosTab),
 /* harmony export */   "start": () => (/* binding */ start),
 /* harmony export */   "test": () => (/* binding */ test),
-/* harmony export */   "updateInterface": () => (/* binding */ updateInterface)
+/* harmony export */   "updateInterface": () => (/* binding */ updateInterface),
+/* harmony export */   "updateSettings": () => (/* binding */ updateSettings)
 /* harmony export */ });
 /* harmony import */ var _alt1_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @alt1/base */ "../node_modules/@alt1/base/dist/index.js");
 /* harmony import */ var _chatbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chatbox.js */ "./scripts/chatbox.js");
@@ -5714,41 +5715,50 @@ let attackImages = [
     { name: "So Much Power", image: "./src/images/smp.png" }
 ]
 
+let settings = {
+    showMouseTooltip: false,
+    refreshRate: 200
+}
+
 /* Main function to run everything else */
-async function start(img, e) {
+async function start(e) {
     try {
         reset();
         element = e;
         await loadImages();
         
-        // Main timer that will repeatedly call the functions
-        setInterval(() => {
-            img = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.captureHoldFullRs();
-
-            if (!foundChat) {
-                findChatBox(img);
-            } else {
-                readChatBox(img);
-            }
-
-            if (z.currentEnrage < 0) {
-                checkEnrage(img);
-            }
-
-            if (z.currentHealth == 0) {
-                checkStreak(img);
-            }
-
-            checkPhase(img);
-            checkSpecPercent(img);
-            checkHealth(img);
-            getNextAttack(img);
-            updateInterface();
-        }, 200)
+        // Main timer that will repeatedly run the other checks
+        setTimeout(loopChecks, settings.refreshRate);
     } catch (ex) {
         console.log(ex);
     }
 };
+
+function loopChecks() {
+    img = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.captureHoldFullRs();
+
+    if (!foundChat) {
+        findChatBox(img);
+    } else {
+        readChatBox(img);
+    }
+
+    if (z.currentEnrage < 0) {
+        checkEnrage(img);
+    }
+
+    if (z.currentHealth == 0) {
+        checkStreak(img);
+    }
+
+    checkPhase(img);
+    checkSpecPercent(img);
+    checkHealth(img);
+    getNextAttack(img);
+    updateInterface();
+
+    setTimeout(loopChecks, settings.refreshRate);
+}
 
 function updateInterface() {
     element.phase.innerHTML = z.currentPhase.toString();
@@ -5823,7 +5833,7 @@ function setSettingsTab() {
 	return _interface_js__WEBPACK_IMPORTED_MODULE_3__.setSettingsTab();
 };
 
-let reset = () => {
+function reset() {
     z.currentPhase = 1;
     z.currentEnrage = -1;
     z.currentSpecPercent = 0;
@@ -6051,6 +6061,10 @@ let debug = () => {
     }
 }
 
+function updateSettings(s) {
+    settings.showMouseTooltip = s.showMouseTooltip;
+    settings.refreshRate = s.refreshRate;
+}
 
 /***/ }),
 
@@ -6671,6 +6685,7 @@ var __webpack_exports__ = {};
   \******************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setDropsTab": () => (/* binding */ setDropsTab),
 /* harmony export */   "setSettingsTab": () => (/* binding */ setSettingsTab),
 /* harmony export */   "setTelosTab": () => (/* binding */ setTelosTab)
 /* harmony export */ });
@@ -6688,7 +6703,6 @@ __webpack_require__.r(__webpack_exports__);
 // Tell webpack to add index.html and appconfig.json to output
 __webpack_require__(/*! !file-loader?name=[name].[ext]!./index.html */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./index.html");
 __webpack_require__(/*! !file-loader?name=[name].[ext]!./appconfig.json */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./appconfig.json");
-let output = document.getElementById("output");
 let element = {
     phase: document.getElementById("phase"),
     enrage: document.getElementById("enrage"),
@@ -6699,11 +6713,16 @@ let element = {
     suggestion: document.getElementById("suggestion"),
     warning: document.getElementById("warning"),
     nextPhase: document.getElementById("next-phase"),
-    streak: document.getElementById("streak")
+    streak: document.getElementById("streak"),
+    showMouseTooltip: localStorage.mouse_tooltip
+};
+let settings = {
+    showMouseTooltip: false,
+    refreshRate: 200
 };
 window.onload = async function start() {
     if (window.alt1) {
-        _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(undefined, element);
+        _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);
     }
     setTelosTab();
     console.log("Ready to spenk");
@@ -6722,20 +6741,41 @@ _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(".contenttab").click(function () {
     if (this.id == "telos-tab") {
         setTelosTab();
     }
+    else if (this.id == "drops-tab") {
+        setDropsTab();
+    }
     else if (this.id == "settings-tab") {
         setSettingsTab();
     }
 });
 function setTelosTab() {
     _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#telos-content').show();
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#drops-content').hide();
     _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#settings-content').hide();
 }
 ;
-function setSettingsTab() {
-    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#settings-content').show();
+function setDropsTab() {
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#settings-content').hide();
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#drops-content').show();
     _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#telos-content').hide();
 }
 ;
+function setSettingsTab() {
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#telos-content').hide();
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#drops-content').hide();
+    _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__('#settings-content').show();
+}
+;
+_js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").change(function () {
+    localStorage.showMouseTooltip = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).is(":checked");
+    settings.showMouseTooltip = localStorage.showMouseTooltip;
+    _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
+});
+_js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").change(function () {
+    localStorage.refreshRate = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();
+    settings.refreshRate = localStorage.refreshRate;
+    _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
+});
 
 })();
 

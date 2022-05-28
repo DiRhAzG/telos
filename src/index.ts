@@ -8,8 +8,6 @@ import * as main from "./scripts/script.js";
 require("!file-loader?name=[name].[ext]!./index.html");
 require("!file-loader?name=[name].[ext]!./appconfig.json");
 
-let output = document.getElementById("output");
-
 let element = {
 	phase: document.getElementById("phase"),
 	enrage: document.getElementById("enrage"),
@@ -20,12 +18,18 @@ let element = {
 	suggestion: document.getElementById("suggestion"),
 	warning: document.getElementById("warning"),
 	nextPhase: document.getElementById("next-phase"),
-	streak: document.getElementById("streak")
+	streak: document.getElementById("streak"),
+	showMouseTooltip: localStorage.mouse_tooltip
+}
+
+let settings = {
+    showMouseTooltip: false,
+    refreshRate: 200
 }
 
 window.onload = async function start() {
 	if (window.alt1) {
-		main.start(undefined, element);
+		main.start(element);
 	}
 
 	setTelosTab();
@@ -49,6 +53,8 @@ $(".contenttab").click(function() {
 	
 	if (this.id == "telos-tab") {
 		setTelosTab();
+	} else if (this.id == "drops-tab") {
+		setDropsTab();
 	} else if (this.id == "settings-tab") {
 		setSettingsTab();
 	}
@@ -56,10 +62,32 @@ $(".contenttab").click(function() {
 
 export function setTelosTab() {
 	$('#telos-content').show();
+	$('#drops-content').hide();
 	$('#settings-content').hide();
 };
 
-export function setSettingsTab() {
-	$('#settings-content').show();
+export function setDropsTab() {
+	$('#settings-content').hide();
+	$('#drops-content').show();
 	$('#telos-content').hide();
 };
+
+export function setSettingsTab() {
+	$('#telos-content').hide();
+	$('#drops-content').hide();
+	$('#settings-content').show();
+};
+
+$("#mouse-tooltip").change(function () {
+	localStorage.showMouseTooltip = $(this).is(":checked");
+	
+	settings.showMouseTooltip = localStorage.showMouseTooltip;
+	main.updateSettings(settings);
+});
+
+$("#refresh-rate").change(function () {
+	localStorage.refreshRate = $(this).val();
+	
+	settings.refreshRate = localStorage.refreshRate;
+	main.updateSettings(settings);
+});
