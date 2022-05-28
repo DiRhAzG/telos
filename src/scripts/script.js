@@ -240,7 +240,7 @@ let setHealth = (health) => {
 
         // Move to next phase if phase health is reached. This allows for faster displaying of next attack.
         if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
-            if (!(z.currentEnrage < 100 && z.currentPhase == 4)) {
+            if (!(z.currentEnrage < 100 && z.currentPhase == 4) && z.currentPhase < 5) {
                 z.currentPhase++;
                 console.log("Health: " + z.currentHealth.toString());
             }
