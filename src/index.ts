@@ -28,7 +28,16 @@ let settings = {
 }
 
 window.onload = async function start() {
+	
 	if (window.alt1) {
+		if (localStorage.getItem("showMouseTooltip") == "true") {
+			$("#mouse-tooltip").prop("checked", true)
+		}
+	
+		if (localStorage.getItem("refreshRate")) {
+			$("#refresh-rate").val(localStorage.getItem("refreshRate"));
+		}
+
 		main.start(element);
 	}
 
