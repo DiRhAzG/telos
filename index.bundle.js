@@ -5743,7 +5743,12 @@ function updateInterface() {
             let nextFont = Math.max(...z.p4Health.filter(h => h < z.currentHealth || h == 0));
             element.health.innerHTML = numberWithCommas(nextFont);
         } else {
-            element.health.innerHTML = numberWithCommas(z.phaseHealth[z.currentPhase]);
+            if (z.phaseHealth[z.currentPhase]) {
+                element.health.innerHTML = numberWithCommas(z.phaseHealth[z.currentPhase]);
+            } else {
+                console.log(z.phaseHealth);
+                console.log(z.currentPhase);
+            }
         }
     }
 
