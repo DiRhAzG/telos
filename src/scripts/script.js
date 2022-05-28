@@ -117,7 +117,7 @@ export function updateInterface() {
     element.streak.innerHTML = z.currentStreak;
 
     if (window.alt1) {
-        alt1.setTooltip("Testing");
+        alt1.setTooltip(attack.nextAttack);
     }
 }
 
