@@ -6716,7 +6716,7 @@ window.onload = async function start() {
         }
     }
     else {
-        localStorage.showMouseTooltip == "false";
+        localStorage.showMouseTooltip = "false";
     }
     if (localStorage.refreshRate) {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").val(localStorage.refreshRate);
@@ -6729,7 +6729,7 @@ window.onload = async function start() {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
     }
     else {
-        localStorage.streakCount == 0;
+        localStorage.streakCount = 0;
     }
     if (window.alt1) {
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);

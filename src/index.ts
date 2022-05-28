@@ -29,7 +29,7 @@ window.onload = async function start() {
 			$("#mouse-tooltip").prop("checked", true);
 		}
 	} else {
-		localStorage.showMouseTooltip == "false";
+		localStorage.showMouseTooltip = "false";
 	}
 
 	if (localStorage.refreshRate) {
@@ -42,7 +42,7 @@ window.onload = async function start() {
 		$("#streak-count").val(localStorage.streakCount);
 		$("#streak").html(localStorage.streakCount);
 	} else {
-		localStorage.streakCount == 0;
+		localStorage.streakCount = 0;
 	}
 
 	if (window.alt1) {
