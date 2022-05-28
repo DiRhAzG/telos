@@ -163,70 +163,71 @@ let loadImages = async () => {
 /* Get the current Phase */
 let checkPhase = (img) => {
     let phase = getPhase(img);
+    setPhase(phase);
+    
+    // console.log("Phase: " + z.currentPhase.toString());
+};
 
+/* Set the current Phase */
+let setPhase = (phase) => {
     if (phase != undefined && phase > 0) {
         z.currentPhase = phase;
     }
-    
-    // console.log("Phase: " + z.currentPhase.toString());
 };
 
 /* Get the current Enrage. Only needed once per kill. */
 let checkEnrage = (img) => {
     let enrage = getEnrage(img);
-
-    if (enrage != undefined && enrage >= 0) {
-        setEnrage(enrage);
-    }
+    setEnrage(enrage);
     
     console.log("Enrage: " + z.currentEnrage.toString());
 };
 
 let setEnrage = (enrage) => {
-    z.currentEnrage = enrage;
-    atk.setAttacks(z.currentEnrage);
-    calculateHealth();
+    if (enrage != undefined && enrage >= 0) {
+        z.currentEnrage = enrage;
+        atk.setAttacks(z.currentEnrage);
+        calculateHealth();
+    }
 };
 
 /* Get the current Special Attack Bar percent */
 let checkSpecPercent = (img) => {
     let specPercent = getSpecPercent(img);
-
-    if (specPercent != undefined && specPercent >= 0) {
-        setSpecPercent(specPercent);
-    }
+    setSpecPercent(specPercent);
     
     // console.log("Spec Percent: " + z.currentSpecPercent.toString());
 };
 
 /* Set the current Special Attack Bar percent */
 let setSpecPercent = (specPercent) => {
-    z.currentSpecPercent = specPercent;
+    if (specPercent != undefined && specPercent >= 0) {
+        z.currentSpecPercent = specPercent;
 
-    if (z.currentSpecPercent > 90 && (z.currentPhase == 1 || z.currentPhase == 4)) {
-        z.warning = "Special Attack is over 90 percent!";
-    } else {
-        z.warning = "";
+        if (z.currentSpecPercent > 90 && (z.currentPhase == 1 || z.currentPhase == 4)) {
+            z.warning = "Special Attack is over 90 percent!";
+        } else {
+            z.warning = "";
+        }
     }
 };
 
 /* Get the current Health */
 let checkHealth = (img) => {
     let health = getHealth(img);
-
-    if (health != undefined && health >= 0) {
-        setHealth(health);
-    }
+    setHealth(health);
     
     // console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */
 let setHealth = (health) => {
-    z.currentHealth = health;
+    if (health != undefined && health >= 0) {
+        z.currentHealth = health;
 
-    if (z.phaseHealth.length > 0 && z.currentPhase < 4 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
-        z.currentPhase++;
+        if (z.phaseHealth.length > 0 && z.currentPhase < 4 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
+            z.currentPhase++;
+        }
     }
 };
 
@@ -315,7 +316,7 @@ let debug = () => {
             if (line.includes("enrage")) {
                 setEnrage(Number(line.slice(10).replace(/\D/g, "")));
             } else if (line.includes("phase")) {
-                z.currentPhase = Number(line.slice(10).replace(/\D/g, ""));
+                setPhase(Number(line.slice(10).replace(/\D/g, "")));
             } else if (line.includes("spec")) {
                 setSpecPercent(Number(line.slice(10).replace(/\D/g, "")));
             } else if (line.includes("hp")) {
