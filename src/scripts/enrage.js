@@ -24,7 +24,7 @@ export function getEnrage(img) {
             return Number(enrage);
         }
         
-        throw 'Enrage not found.'
+        // throw 'Enrage not found.'
     }
     catch (ex) {
         console.log(ex);

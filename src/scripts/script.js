@@ -180,7 +180,7 @@ let checkEnrage = (img) => {
     let enrage = getEnrage(img);
     setEnrage(enrage);
     
-    console.log("Enrage: " + z.currentEnrage.toString());
+    // console.log("Enrage: " + z.currentEnrage.toString());
 };
 
 let setEnrage = (enrage) => {

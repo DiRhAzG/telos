@@ -13,7 +13,7 @@ export async function loadHealthBarImage() {
 export function getHealth(img) {
     try {
         // Get starting pixel for Health image, to be used to grab the health
-        let healthBarPosition = ImageReader.getPosition(img, imgToFind, 162, -7, 61, 14);
+        let healthBarPosition = ImageReader.getPosition(img, imgToFind, 159, -7, 68, 14);
 
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);

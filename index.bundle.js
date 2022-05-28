@@ -5243,7 +5243,7 @@ function getEnrage(img) {
             return Number(enrage);
         }
         
-        throw 'Enrage not found.'
+        // throw 'Enrage not found.'
     }
     catch (ex) {
         console.log(ex);
@@ -5283,7 +5283,7 @@ async function loadHealthBarImage() {
 function getHealth(img) {
     try {
         // Get starting pixel for Health image, to be used to grab the health
-        let healthBarPosition = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.getPosition(img, imgToFind, 162, -7, 61, 14);
+        let healthBarPosition = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.getPosition(img, imgToFind, 159, -7, 68, 14);
 
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);
@@ -5325,24 +5325,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let imgNumbers;
+let imgPhaseEnrageNumbers;
 let imgHealthNumbers;
-let numbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
+let phaseEnrageNumbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
 let healthNumbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
 
 /* Load the images that will be used to search the screen */
 async function loadImages() {
     // The numbers used for Phase and Enrage. If Jagex changes the font, then this needs to be updated.
-    imgNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
-        'iVBORw0KGgoAAAANSUhEUgAAADwAAAAICAMAAACSyWz7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADnUExURQAAAMXCweLg4DMpJXx2c9PR0F5XU3x1c8bCwW1mY/Hw75mUkn92dMbBwf///6ejoayrq1BIRImEgtDPz0lIR5ybm2xqal5WU97e3kZBPoqEgqqko769vUtJSPDw752cm8C/vn58e9LQ0Dc1NUE4NLaysVNOTb++vWZhX6Ogn8TBwO/v7zItLExFQU1KScLAv317e8PAwM3NzbSxsPDv73p0cjMoJVtUUXFubc7NzVlTUO7u7oiDgVpYWM7OzW1rat3d3YN/fnt6ecC+vr28vFBHROHg32hiYJSRj8TAwEpDQUU/Pd7d3dqXESsAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEeSURBVChTVVBpV4NAEMtUR4rY0nq1IuAFVvGoWq2t1XqseP//32MG/GLeS2Z3mOTNAog0gIVFXQK8poqp+DAIL8siAVsqK7y2Wm1AbZ7apIZkB93VtXWAno1N9ID+FrvRdswAHuBXSiQxUpYOzL+DqjAPuzQT0Z7p/gGQ5YeDP3NuYgiPqvljFNST2mgTklC4zimySCJrnJ0PqbH6aF9cKvdBZs6rEbOueaDzvzm8Aca3kylXiHBHMzGrZvpkdA8Eo4f5I/BUBOzaG4yVOfQoxPMLUufU8sEV7bsFWFVyRgKufo/RzIGta8gnpskrxkDZqH4qt/OsvpF16Ds5HzKsK+n0A23npIQWWof0PlGq6BcwcPYy/bbuT8FzyBngF5nXFgTkM1G/AAAAAElFTkSuQmCC'
+    imgPhaseEnrageNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
+        'iVBORw0KGgoAAAANSUhEUgAAADwAAAAICAMAAACSyWz7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADnUExURcXCweLg4DMpJXx2c9PR0F5XU3x1c8bCwW1mY/Hw75mUkn92dMbBwf///6ejoayrq1BIRImEgtDPz0lIR5ybm2xqal5WU97e3kZBPoqEgqqko769vUtJSPDw752cm8C/vn58e9LQ0Dc1NUE4NLaysVNOTb++vWZhX6Ogn8TBwO/v7zItLExFQU1KScLAv317e8PAwM3NzbSxsPDv73p0cjMoJVtUUXFubc7NzVlTUO7u7oiDgVpYWM7OzW1rat3d3YN/fnt6ecC+vr28vFBHROHg32hiYJSRj8TAwEpDQUU/Pd7d3QAAAKageGkAAABNdFJOU/////////////////////////////////////////////////////////////////////////////////////////////////////8A02oRgAAAAAlwSFlzAAAOwgAADsIBFShKgAAAASBJREFUKFNdUGlXwkAQG3QErLTgBVbAqxWtByqKIIpHxTv///eYFD+Z9ya7OzvJy67BrAQsLPoSUK64ia0KwXhYNgvYclvhsVYLAdc8ucKBiLs6Gqtr6wA1G5toAq0tduPtNu/lUi2Y6LTR5VKH9DsobOiHXYqJeE+8fwAk6WHvT5yKhOiokB0jI5/AJNSEdUiMc4oktliNs/M+ue1VhBeXzjxIpLwa0Ouam/C/OLoBhrejMSPEuKOYmBTJWqz4HggGD9NH4CkLKNYbVIU4KpOI5xd089zlD0bUvQy0OmvCAnKY3qOSOFBcIR2JO68YArMS9KlMV9b6xpqbvrM37dOsYd3xB8I8txk887lJ8xMzN/8Cerle5t/q/mTcR5wBfgEWnmQmvRstLAAAAABJRU5ErkJggg=='
     );
     
     // Split the numbers into a dataset with each individual number
-    numbers = _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet.fromFilmStrip(imgNumbers, 6);
+    phaseEnrageNumbers = _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet.fromFilmStrip(imgPhaseEnrageNumbers, 6);
 
     // The numbers used for Phase and Enrage. If Jagex changes the font, then this needs to be updated.
     imgHealthNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
-        'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACfUExURQAAAN/NqO3ast/MqNC/nnBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbGBZSt7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nTLdxTgAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE5SURBVDhPjZKJUsMwDERVCuIItOWoSThLuSkFCvz/t6GVFNklmYE3k135kCx7QgWDDQ+Ihu7/YVO+/v0Doi2rOWQ1zNC2x5SPy+y4g909odq3jQeYQfpoLGIlSjUibgPG7szEXcFSNK4JfNhm8pGqxkZUdKfjCtqZDvjEfKIt8LTdw5qXNDY6ueNTNe4Wtb2jdkEdBWsbrrUE/JjGDJy5o3g6v/BRpmosJ12K1FLQyvGVqsbr5C6v3ameUX0jPveluOytRdM7SbuPrh+g5YMEPPNg5E4pET8isLs6eg6eWOEnufGzRi+qkN/UCxGpkVIUWhCja0qvUH8z+0OsUyMtoc0btLd08dqOpOO+ou9Qv6smN+gj6K33J0WWn62npQ8bOO3zFFSrFWyug+BTvpjKz/zlvvz2QCH6AQbdDCTU+Pe1AAAAAElFTkSuQmCC'
+        'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACfUExURd/NqO3ast/MqNC/nnBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbGBZSt7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nQAAAIxU+xQAAAA1dFJOU/////////////////////////////////////////////////////////////////////8AfLXQCgAAAAlwSFlzAAAOwgAADsIBFShKgAAAAT5JREFUOE+NkwlSwzAMRU1BLIG0LDU2ayk7pUAB3f9saIvskszA60Rfdqxv2ZMGLIQNSxBHpv9hk56h9YF+uKWeIxDhGdy2HMt2hR1TZnePaPZ14QHPcHk7JlWLOiqedwnQ6oqJqcCvvHEpgEO3PpIoueKOpnjccOxNO3CiOpEWYOrWUhclV3q141MR6Jvq2rZ7IUqGIelwrSXGtskqzJkpm8fzCxsVmqw18ZJCImu1gyuJkq9Turw2xTTDdEM6t1d+2FvNpndUdu9dP3CsL8SBmSWtKcaI8MiJntWQfeiKFXjCkJ8le5HI4TdpQYE8YnSjBQJ3jfGVo92ZfiHaqRDikiW/cRy0rm7boHI6LwHvHO2sUpy5DyMM+/1JVWV7y27xQwcM/XW666loViuWuQycT3p8qlzzl+ny2xIB8QfBaMJASzlxZQAAAABJRU5ErkJggg=='
     );
     
     // Split the numbers into a dataset with each individual number
@@ -5400,7 +5400,7 @@ function readNumbers(buffer, type = "") {
     let foundPixel = false;
 
     if (type == "") {
-        numbersList = numbers;
+        numbersList = phaseEnrageNumbers;
     } else if (type == "Health") {
         numbersList = healthNumbers;
     }
@@ -5425,16 +5425,16 @@ function readNumbers(buffer, type = "") {
 
                 let i = 4 * nbw + 4 * numBuffer.width * nbh;
 
-                // Find first non-black pixel for this number
-                if (numBuffer.data[i] == 0 && numBuffer.data[i + 1] == 0 && numBuffer.data[i + 2] == 0) continue;
-                
+                // Find first non-transparent pixel for this number
+                if (numBuffer.data[i + 3] == 0) continue;
+
                 foundPixel = true;
 
                 for (let bh = 0; bh < buffer.height; bh++) {
                     for (let bw = 0; bw < buffer.width; bw++) {
                         let bi = 4 * bw + 4 * buffer.width * bh;
                         
-                        // We found the first non-black pixel for the number. Now find the first match for that pixel in the image
+                        // We found the first non-transparent pixel for the number. Now find the first match for that pixel in the image
                         if (checkPixelMatch(buffer, numBuffer, bi, i)) {
                             // console.log(bi + ' ' + i);
                             // console.log(bw + ' ' + nbw);
@@ -5457,7 +5457,7 @@ function readNumbers(buffer, type = "") {
                 break;
             }
 
-            // If we already found all matches for the number, or we found the first non-black pixel and there were no matches,
+            // If we already found all matches for the number, or we found the first non-transparent pixel and there were no matches,
             // then this number doesn't exist in the image.
             if (match || foundPixel) break;
         }
@@ -5500,16 +5500,16 @@ function checkMatch(buffer, numBuffer, bw, bh, nbw, nbh) {
     let w = bw - nbw;
     let dw = nbw;
 
-    // We already know the row the first non-black pixel is, so start there
+    // We already know the row the first non-transparent pixel is, so start there
     for (let h = nbh; h < numBuffer.height; h++) {
 
-        // We know the width of the first non-black pixel, so start there, but reset to 0 for the next pixel
+        // We know the width of the first non-transparent pixel, so start there, but reset to 0 for the next pixel
         for (dw; dw < numBuffer.width; dw++) {
             let i = 4 * dw + 4 * numBuffer.width * h;
             let bi = 4 * bw + 4 * buffer.width * bh; // Start with the row where a match was found
 
-            // Ignore black pixels
-            if (numBuffer.data[i] == 0 && numBuffer.data[i + 1] == 0 && numBuffer.data[i + 2] == 0) {
+            // Ignore transparent pixels
+            if (numBuffer.data[i + 3] == 0) {
                 bw++;
                 
                 continue;
@@ -5547,6 +5547,7 @@ function showPixel(buffer, i) {
     newBuffer.data[i] = 255;
     newBuffer.data[i + 1] = 0;
     newBuffer.data[i + 2] = 0;
+    newBuffer.data[i + 3] = 255;
 
     outputImage(newBuffer);
 }
@@ -5837,7 +5838,7 @@ let checkEnrage = (img) => {
     let enrage = (0,_enrage_js__WEBPACK_IMPORTED_MODULE_6__.getEnrage)(img);
     setEnrage(enrage);
     
-    console.log("Enrage: " + z.currentEnrage.toString());
+    // console.log("Enrage: " + z.currentEnrage.toString());
 };
 
 let setEnrage = (enrage) => {
