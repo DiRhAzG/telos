@@ -178,9 +178,7 @@ let checkPhase = (img) => {
 let setPhase = (phase) => {
     if (phase != undefined && phase > 0) {
         if (phase < z.currentPhase) {
-            if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
-                return;
-            } else {
+            if (!(z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase])) {
                 z.currentPhase = phase;
             }
         } else {
@@ -236,14 +234,19 @@ let checkHealth = (img) => {
 
 /* Set the current Health */
 let setHealth = (health) => {
+
     if (health != undefined && health >= 0) {
         z.currentHealth = health;
 
         // Move to next phase if phase health is reached. This allows for faster displaying of next attack.
         if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
-            z.currentPhase++;
+            if (!(z.currentEnrage < 100 && z.currentPhase == 4)) {
+                z.currentPhase++;
+                console.log("Health: " + z.currentHealth.toString());
+            }
         }
     }
+
 };
 
 /* Calculate starting Health based on Enrage */

@@ -21,6 +21,7 @@ export function getHealth(img) {
             // ImageReader.outputImage(buffer);
             let health = ImageReader.readNumbers(buffer, "Health");
 
+            console.log(health);
             return Number(health);
         }
         
