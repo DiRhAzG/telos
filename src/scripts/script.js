@@ -171,7 +171,7 @@ let checkPhase = (img) => {
 
     setPhase(phase);
     
-    console.log("Phase: " + z.currentPhase.toString());
+    // console.log("Phase: " + z.currentPhase.toString());
 };
 
 /* Set the current Phase */
