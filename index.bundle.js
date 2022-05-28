@@ -5243,7 +5243,7 @@ function getEnrage(img) {
             return Number(enrage);
         }
         
-        // throw 'Enrage not found.'
+        throw 'Enrage not found.'
     }
     catch (ex) {
         console.log(ex);
@@ -5748,7 +5748,12 @@ function updateInterface() {
     element.nextAttack.innerHTML = attack.nextAttack;
 
     let suggestionImg = attackImages.find(i => i.name == attack.nextAttack).image;
-    element.suggestion.src = suggestionImg;
+
+    if (suggestionImg) {
+        element.suggestion.src = suggestionImg;
+    } else {
+        element.suggestion.src = "./src/images/telos.png";
+    }
 
     if (z.currentPhase == 4) {
         element.nextPhase.innerHTML = "Next Font:"
@@ -5831,7 +5836,7 @@ let checkEnrage = (img) => {
         setEnrage(enrage);
     }
     
-    // console.log("Enrage: " + z.currentEnrage.toString());
+    console.log("Enrage: " + z.currentEnrage.toString());
 };
 
 let setEnrage = (enrage) => {
