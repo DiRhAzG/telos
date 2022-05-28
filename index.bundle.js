@@ -5715,7 +5715,7 @@ async function start(img, e) {
 
             checkPhase(img);
             
-            if (z.currentEnrage > 0) {
+            if (z.currentEnrage < 0) {
                 checkEnrage(img);
             }
 
