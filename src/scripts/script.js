@@ -163,6 +163,7 @@ let loadImages = async () => {
 /* Get the current Phase */
 let checkPhase = (img) => {
     let phase = getPhase(img);
+
     setPhase(phase);
     
     // console.log("Phase: " + z.currentPhase.toString());
@@ -171,7 +172,15 @@ let checkPhase = (img) => {
 /* Set the current Phase */
 let setPhase = (phase) => {
     if (phase != undefined && phase > 0) {
-        z.currentPhase = phase;
+        if (phase < z.currentPhase) {
+            if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
+                return;
+            } else {
+                z.currentPhase = phase;
+            }
+        } else {
+            z.currentPhase = phase;
+        }
     }
 };
 
@@ -225,7 +234,8 @@ let setHealth = (health) => {
     if (health != undefined && health >= 0) {
         z.currentHealth = health;
 
-        if (z.phaseHealth.length > 0 && z.currentPhase < 4 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
+        // Move to next phase if phase health is reached. This allows for faster displaying of next attack.
+        if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
             z.currentPhase++;
         }
     }
@@ -273,8 +283,8 @@ let calculateHealth = () => {
     z.p4Health.push(p4Health * 0.25);
     z.p4Health.push(0);
 
-    // console.log(z.phaseHealth);
-    // console.log(z.p4Health);
+    console.log(z.phaseHealth);
+    console.log(z.p4Health);
 }
 
 /* Find the Chat Box */

@@ -4896,6 +4896,7 @@ async function loadVirusImages() {
     );
 }
 
+/* Set the attacks for the phase, based on current enrage */
 function setAttacks(enrage) {
     // No virus on P2/P3 if enrage is less than 50
     if (enrage < 50) {
@@ -5104,6 +5105,7 @@ function checkPhaseAttacks(phase) {
     return true;
 }
 
+/* Chat reader is not accurate and repeats lines. Only return new lines. */
 function filterLines(lines) {
     let newLines = [];
 
@@ -5821,6 +5823,7 @@ let loadImages = async () => {
 /* Get the current Phase */
 let checkPhase = (img) => {
     let phase = (0,_phase_js__WEBPACK_IMPORTED_MODULE_5__.getPhase)(img);
+
     setPhase(phase);
     
     // console.log("Phase: " + z.currentPhase.toString());
@@ -5829,7 +5832,15 @@ let checkPhase = (img) => {
 /* Set the current Phase */
 let setPhase = (phase) => {
     if (phase != undefined && phase > 0) {
-        z.currentPhase = phase;
+        if (phase < z.currentPhase) {
+            if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
+                return;
+            } else {
+                z.currentPhase = phase;
+            }
+        } else {
+            z.currentPhase = phase;
+        }
     }
 };
 
@@ -5883,7 +5894,8 @@ let setHealth = (health) => {
     if (health != undefined && health >= 0) {
         z.currentHealth = health;
 
-        if (z.phaseHealth.length > 0 && z.currentPhase < 4 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
+        // Move to next phase if phase health is reached. This allows for faster displaying of next attack.
+        if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
             z.currentPhase++;
         }
     }
@@ -5931,8 +5943,8 @@ let calculateHealth = () => {
     z.p4Health.push(p4Health * 0.25);
     z.p4Health.push(0);
 
-    // console.log(z.phaseHealth);
-    // console.log(z.p4Health);
+    console.log(z.phaseHealth);
+    console.log(z.p4Health);
 }
 
 /* Find the Chat Box */

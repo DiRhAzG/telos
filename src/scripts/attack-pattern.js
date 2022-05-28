@@ -76,6 +76,7 @@ export async function loadVirusImages() {
     );
 }
 
+/* Set the attacks for the phase, based on current enrage */
 export function setAttacks(enrage) {
     // No virus on P2/P3 if enrage is less than 50
     if (enrage < 50) {
@@ -284,6 +285,7 @@ function checkPhaseAttacks(phase) {
     return true;
 }
 
+/* Chat reader is not accurate and repeats lines. Only return new lines. */
 function filterLines(lines) {
     let newLines = [];
 
