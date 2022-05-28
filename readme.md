@@ -1,2 +1,2 @@
-# telos
-Telos App
+# Telos Assistant
+Helps spenk Telos
