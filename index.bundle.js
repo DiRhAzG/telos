@@ -6728,10 +6728,13 @@ window.onload = async function start() {
     if (window.alt1) {
         if (localStorage.getItem("showMouseTooltip") == "true") {
             _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
+            settings.showMouseTooltip = localStorage.showMouseTooltip;
         }
         if (localStorage.getItem("refreshRate")) {
             _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").val(localStorage.getItem("refreshRate"));
+            settings.refreshRate = localStorage.refreshRate;
         }
+        _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);
     }
     setTelosTab();
