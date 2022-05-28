@@ -5799,8 +5799,12 @@ function updateInterface() {
     element.warning.innerHTML = z.warning;
     element.streak.innerHTML = z.currentStreak;
 
-    if (window.alt1 && settings.showMouseTooltip) {
-        alt1.setTooltip(attack.nextAttack);
+    if (window.alt1) {
+        if (settings.showMouseTooltip) {
+            alt1.setTooltip(attack.nextAttack);
+        } else {
+            alt1.setTooltip("");
+        }
     }
 }
 
