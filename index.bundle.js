@@ -4899,8 +4899,8 @@ async function loadVirusImages() {
 function setAttacks(enrage) {
     // No virus on P2/P3 if enrage is less than 50
     if (enrage < 50) {
-        phase2 = (0,_ungap_structured_clone__WEBPACK_IMPORTED_MODULE_2__["default"])(phase2All.filter(a => a.name != "Virus"));
-        phase3 = (0,_ungap_structured_clone__WEBPACK_IMPORTED_MODULE_2__["default"])(phase3All.filter(a => a.name != "Virus"));
+        phase2 = (0,_ungap_structured_clone__WEBPACK_IMPORTED_MODULE_2__["default"])(phase2All.filter(a => a.name != "Black Virus"));
+        phase3 = (0,_ungap_structured_clone__WEBPACK_IMPORTED_MODULE_2__["default"])(phase3All.filter(a => a.name != "Red Virus"));
 
         // Magic Onslaught leads to Uppercut if under 50 enrage
         phase3[0].prev.push("Magic Onslaught");
@@ -4977,26 +4977,26 @@ function checkSpecialAttacks(phase, specPercent, img) {
             nextAttack = "Hold Still";
 
             return true;
-        } else if (nextAttack == "Virus") {
+        } else if (nextAttack == "Black Virus") {
             // Try to find Virus debuff image
             let blackVirus = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.findSubimage(img, imgBlackVirus);
             
             // If Virus debuff is found, then Virus has begun
             if (blackVirus.length > 0) {
-                currentAttack = "Virus";
+                currentAttack = "Black Virus";
                 nextAttack = "Uppercut";
 
                 return true;
             }
         }
     } else if (phase == 3) {
-        if (nextAttack == "Black Virus") {
+        if (nextAttack == "Red Virus") {
             // Try to find Virus debuff image
             let redVirus = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.findSubimage(img, imgRedVirus);
             
             // If Virus debuff is found, then Virus has begun
             if (redVirus.length > 0) {
-                currentAttack = "Black Virus";
+                currentAttack = "Red Virus";
                 nextAttack = "Uppercut";
 
                 return true;
