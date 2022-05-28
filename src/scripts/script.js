@@ -311,14 +311,14 @@ let debug = () => {
             } else if (line.includes("phase")) {
                 z.currentPhase = Number(line.slice(10).replace(/\D/g, ""));
             } else if (line.includes("spec")) {
-                z.currentSpecPercent = Number(line.slice(10).replace(/\D/g, ""));
+                setSpecPercent(Number(line.slice(10).replace(/\D/g, "")));
             } else if (line.includes("hp")) {
                 setHealth(Number(line.slice(10).replace(/\D/g, "")));
             } else if (line.includes("clear")) {
                 reset();
             } else if (line.includes("smp")) {
                 atk.handleSmp();
-                z.currentSpecPercent = 0;
+                setSpecPercent(0);
             }
         }
 
