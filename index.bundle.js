@@ -5693,7 +5693,7 @@ let attackImages = [
         name: "Anima", image: "./src/images/debilitate.png",
         name: "Minions", image: "./src/images/minions.png",
         name: "Instant Kill", image: "./src/images/immortality.png",
-        name: "So Much Power", image: "./src/images/.png",
+        name: "So Much Power", image: "./src/images/.png"
     }
 ]
 
@@ -5745,10 +5745,10 @@ function updateInterface() {
         }
     }
 
-    element.currentAttack.innerHTML = attack.currentAttack.toString();
-    element.nextAttack.innerHTML = attack.nextAttack.toString();
+    element.currentAttack.innerHTML = attack.currentAttack;
+    element.nextAttack.innerHTML = attack.nextAttack;
 
-    let suggestionImg = attackImages.find(i => i.name == element.nextAttack).image;
+    let suggestionImg = attackImages.find(i => i.name == attack.nextAttack).image;
     element.suggestion.src = suggestionImg;
 
     if (z.currentPhase == 4) {
