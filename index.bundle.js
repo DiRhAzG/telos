@@ -5889,7 +5889,7 @@ let checkHealth = (img) => {
     let health = (0,_health_bar__WEBPACK_IMPORTED_MODULE_8__.getHealth)(img);
     setHealth(health);
     
-    // console.log("Health: " + z.currentHealth.toString());
+    console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */
