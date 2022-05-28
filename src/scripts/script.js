@@ -229,7 +229,7 @@ let checkHealth = (img) => {
     let health = getHealth(img);
     setHealth(health);
     
-    // console.log("Health: " + z.currentHealth.toString());
+    console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */

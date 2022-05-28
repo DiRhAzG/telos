@@ -5293,7 +5293,6 @@ function getHealth(img) {
             // ImageReader.outputImage(buffer);
             let health = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Health");
 
-            console.log(health);
             return Number(health);
         }
         
@@ -5483,8 +5482,8 @@ function readNumbers(buffer, type = "") {
 
 /* Check if two pixels match, within reasonable bounds */
 function checkPixelMatch(buffer, numBuffer, bi, i) {
-    let variance = 10;
-    
+    let variance = 15;
+
     if (
         buffer.data[bi] > numBuffer.data[i] - variance && buffer.data[bi] < numBuffer.data[i] + variance
         && buffer.data[bi + 1] > numBuffer.data[i + 1] - variance && buffer.data[bi + 1] < numBuffer.data[i + 1] + variance
@@ -5890,7 +5889,7 @@ let checkHealth = (img) => {
     let health = (0,_health_bar__WEBPACK_IMPORTED_MODULE_8__.getHealth)(img);
     setHealth(health);
     
-    // console.log("Health: " + z.currentHealth.toString());
+    console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */

@@ -156,8 +156,8 @@ export function readNumbers(buffer, type = "") {
 
 /* Check if two pixels match, within reasonable bounds */
 export function checkPixelMatch(buffer, numBuffer, bi, i) {
-    let variance = 10;
-    
+    let variance = 15;
+
     if (
         buffer.data[bi] > numBuffer.data[i] - variance && buffer.data[bi] < numBuffer.data[i] + variance
         && buffer.data[bi + 1] > numBuffer.data[i + 1] - variance && buffer.data[bi + 1] < numBuffer.data[i + 1] + variance
