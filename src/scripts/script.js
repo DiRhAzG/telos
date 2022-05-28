@@ -115,7 +115,7 @@ export function updateInterface() {
 /* Used for testing, using pasted screenshots */
 export async function test(img, e) {
     try {
-        reset();
+        // reset();
         element = e;
         await loadImages();
 
@@ -171,7 +171,7 @@ let checkPhase = (img) => {
 
     setPhase(phase);
     
-    // console.log("Phase: " + z.currentPhase.toString());
+    console.log("Phase: " + z.currentPhase.toString());
 };
 
 /* Set the current Phase */
@@ -229,7 +229,7 @@ let checkHealth = (img) => {
     let health = getHealth(img);
     setHealth(health);
     
-    console.log("Health: " + z.currentHealth.toString());
+    // console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */
