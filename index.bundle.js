@@ -5290,7 +5290,7 @@ function getHealth(img) {
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);
 
-            // ImageReader.outputImage(buffer);
+            _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.outputImage(buffer);
             let health = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Health");
 
             return Number(health);
