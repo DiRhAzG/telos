@@ -5754,6 +5754,8 @@ function updateInterface() {
     } else {
         element.nextPhase.innerHTML = "Next Phase:"
     }
+
+    element.warning.innerHTML = z.warning;
 }
 
 /* Used for testing, using pasted screenshots */
