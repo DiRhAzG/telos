@@ -4161,7 +4161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#telos-content {\r\n    margin-top: 5px;\r\n}\r\n\r\ntable.stats {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 10px;\r\n}\r\n\r\n.lbl-bottom {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    color: #20b0db;\r\n    text-align: center;\r\n    text-decoration: underline;\r\n    text-decoration-color: #83aa9e;\r\n}\r\n\r\n.test {\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.lbl-top {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    color: #20b0db;\r\n    width: 50%;\r\n    text-align: right;\r\n    padding-right: 10px;\r\n    position: absolute;\r\n}\r\n\r\n.val-top {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    width: 50%;\r\n    text-align: left;\r\n}\r\n\r\ntd.value {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.col-phase {\r\n    width: 20%;\r\n}\r\n\r\n.col-enrage {\r\n    width: 60%;\r\n}\r\n\r\n.col-special {\r\n    width: 30%;\r\n}\r\n\r\n.col-health {\r\n    width: 50%;\r\n}\r\n\r\n.col-streak {\r\n    width: 30%;\r\n}\r\n\r\n#phase {\r\n    color: #FFB238;\r\n    font-size: 18px;\r\n}\r\n\r\n#enrage {\r\n    color: #b1a612;\r\n    font-size: 18px;\r\n}\r\n\r\n#health {\r\n    margin-top: 3px;\r\n    color: #1add65;\r\n}\r\n\r\n#special {\r\n    color: #3addda;\r\n}\r\n\r\n#streak {\r\n    color: #29BAB8;\r\n    font-size: 18px;\r\n}\r\n\r\n#current-attack {\r\n    color: #c77c0d;\r\n    white-space: nowrap;\r\n}\r\n\r\n.row-health {\r\n    margin-top: 7px;\r\n}\r\n\r\n.lbl-attack {\r\n    color: #edff4a;\r\n    font-size: 20px;\r\n    font-weight: bolder;\r\n    text-align: center;\r\n}\r\n\r\n#next-attack {\r\n    font-size: 30px;\r\n    text-align: center;\r\n    font-weight: bolder;\r\n}\r\n\r\n#suggestion {\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    height: 60px;\r\n}\r\n\r\n#warning {\r\n    color: #df1010;\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    margin-left: 5px;\r\n    text-align: center;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#telos-content {\r\n    margin-top: 5px;\r\n}\r\n\r\ntable.stats {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 10px;\r\n}\r\n\r\n.lbl-bottom {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    color: #20b0db;\r\n    text-align: center;\r\n    text-decoration: underline;\r\n    text-decoration-color: #83aa9e;\r\n}\r\n\r\n.test {\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.lbl-top {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    color: #20b0db;\r\n    width: 50%;\r\n    text-align: right;\r\n    padding-right: 10px;\r\n    position: absolute;\r\n}\r\n\r\n.val-top {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    width: 50%;\r\n    text-align: left;\r\n}\r\n\r\ntd.value {\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    text-align: center;\r\n}\r\n\r\n.col-phase {\r\n    width: 20%;\r\n}\r\n\r\n.col-enrage {\r\n    width: 60%;\r\n}\r\n\r\n.col-special {\r\n    width: 30%;\r\n}\r\n\r\n.col-health {\r\n    width: 50%;\r\n}\r\n\r\n.col-streak {\r\n    width: 30%;\r\n}\r\n\r\n#phase {\r\n    color: #FFB238;\r\n    font-size: 18px;\r\n}\r\n\r\n#enrage {\r\n    color: #b1a612;\r\n    font-size: 18px;\r\n}\r\n\r\n#health {\r\n    margin-top: 3px;\r\n    color: #1add65;\r\n}\r\n\r\n#special {\r\n    color: #3addda;\r\n}\r\n\r\n#streak {\r\n    color: #29BAB8;\r\n    font-size: 18px;\r\n}\r\n\r\n#current-attack {\r\n    color: #c77c0d;\r\n    white-space: nowrap;\r\n}\r\n\r\n.row-health {\r\n    margin-top: 7px;\r\n}\r\n\r\n.lbl-attack {\r\n    color: #edff4a;\r\n    font-size: 20px;\r\n    font-weight: bolder;\r\n    text-align: center;\r\n}\r\n\r\n#next-attack {\r\n    font-size: 30px;\r\n    text-align: center;\r\n    font-weight: bolder;\r\n}\r\n\r\n#suggestion {\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    height: 60px;\r\n}\r\n\r\n#warning {\r\n    color: #df1010;\r\n    font-size: 15px;\r\n    font-weight: bold;\r\n    margin-left: 5px;\r\n    text-align: center;\r\n}\r\n\r\n.settings {\r\n    \r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5329,8 +5329,10 @@ __webpack_require__.r(__webpack_exports__);
 
 let imgPhaseEnrageNumbers;
 let imgHealthNumbers;
+let imgStreakNumbers;
 let phaseEnrageNumbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
 let healthNumbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
+let streakNumbers = new _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet();
 
 /* Load the images that will be used to search the screen */
 async function loadImages() {
@@ -5342,13 +5344,21 @@ async function loadImages() {
     // Split the numbers into a dataset with each individual number
     phaseEnrageNumbers = _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet.fromFilmStrip(imgPhaseEnrageNumbers, 6);
 
-    // The numbers used for Phase and Enrage. If Jagex changes the font, then this needs to be updated.
+    // The numbers used for Health.
     imgHealthNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
         'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcUExURe3ast/MqNC/nt/NqHBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbN7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nQAAADUbNEgAAAA0dFJOU////////////////////////////////////////////////////////////////////wBLVyJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABOUlEQVQ4T42TB1PDMAyFzRAjtGXUJMxSNqVAAf3//4bGi+KS3MF3Fz156Fn2tYkLusEG9D9syje0P/EW8zY8yUVmeAd5cVzHLlTZ2xeqg2Kjlo/GMuEWZXQibxOS3QUTqKFL0bgV0GFYH1m03AlHKB9XGnvTAZ24TqwFmoa11WXLnV7t+NSE+qa+d9QumIphqn241pKCYxoX5Qyq5vn8AqOOqvGafCmhFmu3oyuLlq/TdXkN5XrG9Y3oHEtx2VvPpndSdh9dP2gsHySgGZIRlHNmetTE7wrsHHlih544Nc+WvVjU8Jt6IUE8cg6jBZN2zflVI97MfyHeqZHyUqV50zhoXbw2kHK5r0DvGnFXK260D5CG/f6kqMLZdlr+8IEi/6H2eQqq1UplboPgU76Y6p75C7r8RmIw/wDV2r7vDkndRgAAAABJRU5ErkJggg=='
     );
     
     // Split the numbers into a dataset with each individual number
     healthNumbers = _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet.fromFilmStrip(imgHealthNumbers, 9);
+
+    // The numbers used for Streak.
+    imgStreakNumbers = await _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.imageDataFromBase64(
+        'iVBORw0KGgoAAAANSUhEUgAAAG4AAAANCAMAAAB/5as9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAPtJREFUOE99UwsOw1AI6rv/pSfgB1+bsUQQ0W5N9pzzBI7QgqYaqhlUaLmlyYCbLp/4kFhtv4qw5DWLJrmgRKvsVZbBpjGdq1lO7KXABLKiUNcPUr02++bYYdHt0ZKCBVY2yKRRojpzQ64TAZOCelbNMhD073E9m4MQ7MLrF2MaGDuKJCuoYpuIdUGadXwpr0CKoP4SYD1+hkaBWSfUsdqEMttycyyqLJ4F3f2i8QvsYykhM13T4C8CEKjVa9oHC2bc8rpQvAiArL/5NfWTVgk9Q/JVO6gLfgfSX6nek0smWiVeLrgCE4TyjhJlooRJDYoTH+5oS/Z+z8/5Aae0BB5ynSvRAAAAAElFTkSuQmCC'
+    );
+    
+    // Split the numbers into a dataset with each individual number
+    streakNumbers = _alt1_base_dist_imagedetect__WEBPACK_IMPORTED_MODULE_1__.ImageDataSet.fromFilmStrip(imgStreakNumbers, 11);
 }
 
 /*
@@ -5405,6 +5415,8 @@ function readNumbers(buffer, type = "") {
         numbersList = phaseEnrageNumbers;
     } else if (type == "Health") {
         numbersList = healthNumbers;
+    } else if (type == "Streak") {
+        numbersList = streakNumbers;
     }
 
     // Loop through each number in our list
@@ -5658,6 +5670,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _enrage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./enrage.js */ "./scripts/enrage.js");
 /* harmony import */ var _spec_bar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./spec-bar */ "./scripts/spec-bar.js");
 /* harmony import */ var _health_bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./health-bar */ "./scripts/health-bar.js");
+/* harmony import */ var _streak__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./streak */ "./scripts/streak.js");
+
 
 
 
@@ -5674,8 +5688,9 @@ let z = {
     currentSpecPercent: 0,
     currentHealth: 0,
     startingHealth: 0,
+    currentStreak: 0,
     phaseHealth: [],
-    p4Health: [],
+    fontHealth: [],
     warning: ""
 }
 
@@ -5716,15 +5731,17 @@ async function start(img, e) {
                 readChatBox(img);
             }
 
-            checkPhase(img);
-            
             if (z.currentEnrage < 0) {
                 checkEnrage(img);
             }
 
+            if (z.currentHealth == 0) {
+                checkStreak(img);
+            }
+
+            checkPhase(img);
             checkSpecPercent(img);
             checkHealth(img);
-
             getNextAttack(img);
             updateInterface();
         }, 200)
@@ -5739,8 +5756,8 @@ function updateInterface() {
     element.special.innerHTML = z.currentSpecPercent.toString() + '%';
 
     if (z.phaseHealth.length > 0) {
-        if (z.currentPhase == 4 && z.p4Health.length > 0) {
-            let nextFont = Math.max(...z.p4Health.filter(h => h < z.currentHealth || h == 0));
+        if (z.currentPhase == 4 && z.fontHealth.length > 0) {
+            let nextFont = Math.max(...z.fontHealth.filter(h => h < z.currentHealth || h == 0));
             element.health.innerHTML = numberWithCommas(nextFont);
         } else {
             if (z.phaseHealth[z.currentPhase]) {
@@ -5770,6 +5787,11 @@ function updateInterface() {
     }
 
     element.warning.innerHTML = z.warning;
+    element.streak.innerHTML = z.currentStreak;
+
+    if (window.alt1) {
+        alt1.setTooltip("Testing");
+    }
 }
 
 /* Used for testing, using pasted screenshots */
@@ -5785,6 +5807,7 @@ async function test(img, e) {
         checkEnrage(img);
         checkSpecPercent(img);
         checkHealth(img);
+        checkStreak(img);
         getNextAttack(img);
         updateInterface();
     } catch (ex) {
@@ -5806,8 +5829,9 @@ let reset = () => {
     z.currentSpecPercent = 0;
     z.currentHealth = 0;
     z.startingHealth = 0;
+    z.currentStreak = 0;
     z.phaseHealth = [];
-    z.p4Health = [];
+    z.fontHealth = [];
     z.warning = "";
 
     attack = { currentAttack: 'N/A', nextAttack: 'Tendrils' };
@@ -5822,6 +5846,7 @@ let loadImages = async () => {
     await (0,_enrage_js__WEBPACK_IMPORTED_MODULE_6__.loadEnrageImage)();
     await (0,_spec_bar__WEBPACK_IMPORTED_MODULE_7__.loadSpecBarImage)();
     await (0,_health_bar__WEBPACK_IMPORTED_MODULE_8__.loadHealthBarImage)();
+    await (0,_streak__WEBPACK_IMPORTED_MODULE_9__.loadStreakImage)();
     await _attack_pattern__WEBPACK_IMPORTED_MODULE_4__.loadVirusImages();
 };
 
@@ -5915,10 +5940,10 @@ let calculateHealth = () => {
     let p5BaseHealth = 100000;
     let enrageHealth;
     let p5EnrageHealth; // 500 per enrage
-    let p4Health;
+    let fontHealth;
 
     z.phaseHealth = [];
-    z.p4Health = [];
+    z.fontHealth = [];
 
     enrageHealth = 1000 * z.currentEnrage;
 
@@ -5932,8 +5957,8 @@ let calculateHealth = () => {
     z.phaseHealth.push(z.startingHealth * 0.75);
     z.phaseHealth.push(z.startingHealth * 0.50);
 
-    p4Health = z.startingHealth * 0.25;
-    z.phaseHealth.push(p4Health);
+    fontHealth = z.startingHealth * 0.25;
+    z.phaseHealth.push(fontHealth);
     z.phaseHealth.push(0);
 
     if (z.currentEnrage >= 100) {
@@ -5946,14 +5971,30 @@ let calculateHealth = () => {
         z.phaseHealth.push(p5BaseHealth + p5EnrageHealth);
     }
 
-    z.p4Health.push(p4Health * 0.75);
-    z.p4Health.push(p4Health * 0.50);
-    z.p4Health.push(p4Health * 0.25);
-    z.p4Health.push(0);
+    z.fontHealth.push(Math.floor(fontHealth * 0.75));
+    z.fontHealth.push(Math.floor(fontHealth * 0.50));
+    z.fontHealth.push(Math.floor(fontHealth * 0.25));
+    z.fontHealth.push(0);
 
     // console.log(z.phaseHealth);
-    // console.log(z.p4Health);
+    // console.log(z.fontHealth);
 }
+
+/* Get the current Streak */
+let checkStreak = (img) => {
+    let streak = (0,_streak__WEBPACK_IMPORTED_MODULE_9__.getStreak)(img);
+
+    setStreak(streak);
+    
+    // console.log("Phase: " + z.currentPhase.toString());
+};
+
+/* Set the current Streak */
+let setStreak = (streak) => {
+    if (streak != undefined && streak > 0) {
+        z.currentStreak = streak;
+    }
+};
 
 /* Find the Chat Box */
 let findChatBox = (img) => {
@@ -6081,6 +6122,57 @@ function calculateSpecPercent(buffer) {
     }
 
     return Math.round(specPercent);
+}
+
+/***/ }),
+
+/***/ "./scripts/streak.js":
+/*!***************************!*\
+  !*** ./scripts/streak.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getStreak": () => (/* binding */ getStreak),
+/* harmony export */   "loadStreakImage": () => (/* binding */ loadStreakImage)
+/* harmony export */ });
+/* harmony import */ var _image_reader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./image-reader.js */ "./scripts/image-reader.js");
+/* harmony import */ var _alt1_base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @alt1/base */ "../node_modules/@alt1/base/dist/index.js");
+
+
+
+let imgToFind;
+
+async function loadStreakImage() {
+    // Streak text
+    imgToFind = await _alt1_base__WEBPACK_IMPORTED_MODULE_1__.ImageDetect.imageDataFromBase64(
+        'iVBORw0KGgoAAAANSUhEUgAAAEQAAAAJCAMAAAC8C3oyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVUExURY2tuyA3QQofKUFaZoWks67Q4HeVo1dyfkxmcmyJl5i4yBkhJQkbJAIGCAcVGwAAAAIICi43PAMKDhccHpe0wgURFqLC0QYTGQQMEDZOWhgfIio/Sj1NVQcXHpi4xwEEBQ0QEkphbDNLVzRKVBUrNZe2xHaSnitCTgkdJmB4g11weQcXH0ZTWnSLlTtITmF7hyk+R4KhrwUOE4yquDE/RhAbIYCZpAgZITpFS6PD0qPE1A0SFGyHlIWksoKcqKPE0wECA42suneUoUZUW0pibQMICwMICuHnWwcAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE8SURBVChTXVHZVsJADB0CobS0RPZFEcWliLihouICbvz/J3mTDnJO+5BJcpdmMs4ViFyRSlwiTVFYJMdcJrYv0IIr1uNQQS2MCKVmUTUOwqRGLHtI0cliWEmk3iBptkSkHVVFOl1AKHpEfeauEU2pJoP9qA2AhaKBmVgsH4A2JCocjnzPHXkI4HGnqU1TjnnsIuYT5eVMTs/OU+X/m6ScTLYm3LiYxrRVXgommV3hj3kTmlzzDQ5vgmXcgoADVXAnKc9BzJR2nfj+AUnehKjWetxNIov6kx4imSU/K9GUmUn6AsOcSRGrX75OdtcpgJRB6XIkMlvUvFJ34gC8TemdP+wF2cf+Co+6hsmnmijp69ugiMKfNVr865W6E0rg3pvTRjaUYFrxcbgWwQNRnCAYqdE1aEQ97ROImZLoD1BUH3jNlIZWAAAAAElFTkSuQmCC'
+    );
+}
+
+function getStreak(img) {
+    try {
+        // Get starting pixel for Streak image, to be used to grab the Streak
+        let streakPosition = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.getPosition(img, imgToFind, 0, 16, 68, 14);
+
+        if (streakPosition != undefined) {
+            let buffer = img.toData(streakPosition.x, streakPosition.y, streakPosition.w, streakPosition.h);
+
+            // ImageReader.outputImage(buffer);
+            let streak = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Streak");
+
+            return Number(streak);
+        }
+        
+        // throw 'Streak not found.'
+    }
+    catch (ex) {
+        console.log(ex);
+        return undefined;
+    }
+
 }
 
 /***/ }),
@@ -6606,7 +6698,8 @@ let element = {
     nextAttack: document.getElementById("next-attack"),
     suggestion: document.getElementById("suggestion"),
     warning: document.getElementById("warning"),
-    nextPhase: document.getElementById("next-phase")
+    nextPhase: document.getElementById("next-phase"),
+    streak: document.getElementById("streak")
 };
 window.onload = async function start() {
     if (window.alt1) {

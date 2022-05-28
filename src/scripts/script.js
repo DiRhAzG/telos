@@ -7,6 +7,7 @@ import { loadPhaseImage, getPhase } from "./phase.js";
 import { loadEnrageImage, getEnrage } from "./enrage.js";
 import { loadSpecBarImage, getSpecPercent } from "./spec-bar";
 import { loadHealthBarImage, getHealth } from "./health-bar";
+import { loadStreakImage, getStreak } from "./streak";
 
 let z = {
     currentPhase: 1,
@@ -14,8 +15,9 @@ let z = {
     currentSpecPercent: 0,
     currentHealth: 0,
     startingHealth: 0,
+    currentStreak: 0,
     phaseHealth: [],
-    p4Health: [],
+    fontHealth: [],
     warning: ""
 }
 
@@ -56,15 +58,17 @@ export async function start(img, e) {
                 readChatBox(img);
             }
 
-            checkPhase(img);
-            
             if (z.currentEnrage < 0) {
                 checkEnrage(img);
             }
 
+            if (z.currentHealth == 0) {
+                checkStreak(img);
+            }
+
+            checkPhase(img);
             checkSpecPercent(img);
             checkHealth(img);
-
             getNextAttack(img);
             updateInterface();
         }, 200)
@@ -79,8 +83,8 @@ export function updateInterface() {
     element.special.innerHTML = z.currentSpecPercent.toString() + '%';
 
     if (z.phaseHealth.length > 0) {
-        if (z.currentPhase == 4 && z.p4Health.length > 0) {
-            let nextFont = Math.max(...z.p4Health.filter(h => h < z.currentHealth || h == 0));
+        if (z.currentPhase == 4 && z.fontHealth.length > 0) {
+            let nextFont = Math.max(...z.fontHealth.filter(h => h < z.currentHealth || h == 0));
             element.health.innerHTML = numberWithCommas(nextFont);
         } else {
             if (z.phaseHealth[z.currentPhase]) {
@@ -110,6 +114,11 @@ export function updateInterface() {
     }
 
     element.warning.innerHTML = z.warning;
+    element.streak.innerHTML = z.currentStreak;
+
+    if (window.alt1) {
+        alt1.setTooltip("Testing");
+    }
 }
 
 /* Used for testing, using pasted screenshots */
@@ -125,6 +134,7 @@ export async function test(img, e) {
         checkEnrage(img);
         checkSpecPercent(img);
         checkHealth(img);
+        checkStreak(img);
         getNextAttack(img);
         updateInterface();
     } catch (ex) {
@@ -146,8 +156,9 @@ export let reset = () => {
     z.currentSpecPercent = 0;
     z.currentHealth = 0;
     z.startingHealth = 0;
+    z.currentStreak = 0;
     z.phaseHealth = [];
-    z.p4Health = [];
+    z.fontHealth = [];
     z.warning = "";
 
     attack = { currentAttack: 'N/A', nextAttack: 'Tendrils' };
@@ -162,6 +173,7 @@ let loadImages = async () => {
     await loadEnrageImage();
     await loadSpecBarImage();
     await loadHealthBarImage();
+    await loadStreakImage();
     await atk.loadVirusImages();
 };
 
@@ -255,10 +267,10 @@ let calculateHealth = () => {
     let p5BaseHealth = 100000;
     let enrageHealth;
     let p5EnrageHealth; // 500 per enrage
-    let p4Health;
+    let fontHealth;
 
     z.phaseHealth = [];
-    z.p4Health = [];
+    z.fontHealth = [];
 
     enrageHealth = 1000 * z.currentEnrage;
 
@@ -272,8 +284,8 @@ let calculateHealth = () => {
     z.phaseHealth.push(z.startingHealth * 0.75);
     z.phaseHealth.push(z.startingHealth * 0.50);
 
-    p4Health = z.startingHealth * 0.25;
-    z.phaseHealth.push(p4Health);
+    fontHealth = z.startingHealth * 0.25;
+    z.phaseHealth.push(fontHealth);
     z.phaseHealth.push(0);
 
     if (z.currentEnrage >= 100) {
@@ -286,14 +298,30 @@ let calculateHealth = () => {
         z.phaseHealth.push(p5BaseHealth + p5EnrageHealth);
     }
 
-    z.p4Health.push(p4Health * 0.75);
-    z.p4Health.push(p4Health * 0.50);
-    z.p4Health.push(p4Health * 0.25);
-    z.p4Health.push(0);
+    z.fontHealth.push(Math.floor(fontHealth * 0.75));
+    z.fontHealth.push(Math.floor(fontHealth * 0.50));
+    z.fontHealth.push(Math.floor(fontHealth * 0.25));
+    z.fontHealth.push(0);
 
     // console.log(z.phaseHealth);
-    // console.log(z.p4Health);
+    // console.log(z.fontHealth);
 }
+
+/* Get the current Streak */
+let checkStreak = (img) => {
+    let streak = getStreak(img);
+
+    setStreak(streak);
+    
+    // console.log("Phase: " + z.currentPhase.toString());
+};
+
+/* Set the current Streak */
+let setStreak = (streak) => {
+    if (streak != undefined && streak > 0) {
+        z.currentStreak = streak;
+    }
+};
 
 /* Find the Chat Box */
 let findChatBox = (img) => {

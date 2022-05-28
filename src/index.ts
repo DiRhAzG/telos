@@ -19,7 +19,8 @@ let element = {
 	nextAttack: document.getElementById("next-attack"),
 	suggestion: document.getElementById("suggestion"),
 	warning: document.getElementById("warning"),
-	nextPhase: document.getElementById("next-phase")
+	nextPhase: document.getElementById("next-phase"),
+	streak: document.getElementById("streak")
 }
 
 window.onload = async function start() {

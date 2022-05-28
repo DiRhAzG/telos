@@ -3,8 +3,10 @@ import { ImageDataSet } from "@alt1/base/dist/imagedetect";
 
 let imgPhaseEnrageNumbers;
 let imgHealthNumbers;
+let imgStreakNumbers;
 let phaseEnrageNumbers = new ImageDataSet();
 let healthNumbers = new ImageDataSet();
+let streakNumbers = new ImageDataSet();
 
 /* Load the images that will be used to search the screen */
 export async function loadImages() {
@@ -16,13 +18,21 @@ export async function loadImages() {
     // Split the numbers into a dataset with each individual number
     phaseEnrageNumbers = ImageDataSet.fromFilmStrip(imgPhaseEnrageNumbers, 6);
 
-    // The numbers used for Phase and Enrage. If Jagex changes the font, then this needs to be updated.
+    // The numbers used for Health.
     imgHealthNumbers = await ImageDetect.imageDataFromBase64(
         'iVBORw0KGgoAAAANSUhEUgAAAFoAAAAMCAMAAADVoVraAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcUExURe3ast/MqNC/nt/NqHBnVe7asr6uj6+hhK+ihZ+TeM69m5CEbN7Mp8++nN/NqYB2YJ6Sd8+/nVBLPb6vj+vXsM69nO3ZsezYsc27moB1YHJpV5+Sd828ms68m8y7mUA7MM+9nH90X8++nY+Da62fgjAsJEI9Ml9YSH5zXsy8mtvJpa6ggzIuJqCTdz86L9DAnn92YHBnVtC/nQAAADUbNEgAAAA0dFJOU////////////////////////////////////////////////////////////////////wBLVyJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABOUlEQVQ4T42TB1PDMAyFzRAjtGXUJMxSNqVAAf3//4bGi+KS3MF3Fz156Fn2tYkLusEG9D9syje0P/EW8zY8yUVmeAd5cVzHLlTZ2xeqg2Kjlo/GMuEWZXQibxOS3QUTqKFL0bgV0GFYH1m03AlHKB9XGnvTAZ24TqwFmoa11WXLnV7t+NSE+qa+d9QumIphqn241pKCYxoX5Qyq5vn8AqOOqvGafCmhFmu3oyuLlq/TdXkN5XrG9Y3oHEtx2VvPpndSdh9dP2gsHySgGZIRlHNmetTE7wrsHHlih544Nc+WvVjU8Jt6IUE8cg6jBZN2zflVI97MfyHeqZHyUqV50zhoXbw2kHK5r0DvGnFXK260D5CG/f6kqMLZdlr+8IEi/6H2eQqq1UplboPgU76Y6p75C7r8RmIw/wDV2r7vDkndRgAAAABJRU5ErkJggg=='
     );
     
     // Split the numbers into a dataset with each individual number
     healthNumbers = ImageDataSet.fromFilmStrip(imgHealthNumbers, 9);
+
+    // The numbers used for Streak.
+    imgStreakNumbers = await ImageDetect.imageDataFromBase64(
+        'iVBORw0KGgoAAAANSUhEUgAAAG4AAAANCAMAAAB/5as9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAPtJREFUOE99UwsOw1AI6rv/pSfgB1+bsUQQ0W5N9pzzBI7QgqYaqhlUaLmlyYCbLp/4kFhtv4qw5DWLJrmgRKvsVZbBpjGdq1lO7KXABLKiUNcPUr02++bYYdHt0ZKCBVY2yKRRojpzQ64TAZOCelbNMhD073E9m4MQ7MLrF2MaGDuKJCuoYpuIdUGadXwpr0CKoP4SYD1+hkaBWSfUsdqEMttycyyqLJ4F3f2i8QvsYykhM13T4C8CEKjVa9oHC2bc8rpQvAiArL/5NfWTVgk9Q/JVO6gLfgfSX6nek0smWiVeLrgCE4TyjhJlooRJDYoTH+5oS/Z+z8/5Aae0BB5ynSvRAAAAAElFTkSuQmCC'
+    );
+    
+    // Split the numbers into a dataset with each individual number
+    streakNumbers = ImageDataSet.fromFilmStrip(imgStreakNumbers, 11);
 }
 
 /*
@@ -79,6 +89,8 @@ export function readNumbers(buffer, type = "") {
         numbersList = phaseEnrageNumbers;
     } else if (type == "Health") {
         numbersList = healthNumbers;
+    } else if (type == "Streak") {
+        numbersList = streakNumbers;
     }
 
     // Loop through each number in our list
