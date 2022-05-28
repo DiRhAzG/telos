@@ -5838,7 +5838,7 @@ let checkPhase = (img) => {
 let setPhase = (phase) => {
     if (phase != undefined && phase > 0) {
         if (phase < z.currentPhase) {
-            if (!(z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase])) {
+            if (!(z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[phase])) {
                 z.currentPhase = phase;
             }
         } else {
