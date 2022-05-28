@@ -6710,8 +6710,10 @@ let element = {
     showMouseTooltip: localStorage.mouse_tooltip
 };
 window.onload = async function start() {
-    if (localStorage.showMouseTooltip == "true") {
-        _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
+    if (localStorage.showMouseTooltip) {
+        if (localStorage.showMouseTooltip == "true") {
+            _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
+        }
     }
     else {
         localStorage.showMouseTooltip == "false";

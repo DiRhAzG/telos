@@ -24,8 +24,10 @@ let element = {
 
 window.onload = async function start() {
 	
-	if (localStorage.showMouseTooltip == "true") {
-		$("#mouse-tooltip").prop("checked", true)
+	if (localStorage.showMouseTooltip) {
+		if (localStorage.showMouseTooltip == "true") {
+			$("#mouse-tooltip").prop("checked", true);
+		}
 	} else {
 		localStorage.showMouseTooltip == "false";
 	}
