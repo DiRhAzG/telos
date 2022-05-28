@@ -22,24 +22,16 @@ let element = {
 	showMouseTooltip: localStorage.mouse_tooltip
 }
 
-let settings = {
-    showMouseTooltip: false,
-    refreshRate: 200,
-	streakCount: 0
-}
-
 window.onload = async function start() {
 	
 	if (localStorage.showMouseTooltip == "true") {
 		$("#mouse-tooltip").prop("checked", true)
-		settings.showMouseTooltip = localStorage.showMouseTooltip;
 	} else {
 		localStorage.showMouseTooltip == "false";
 	}
 
 	if (localStorage.refreshRate) {
 		$("#refresh-rate").val(localStorage.refreshRate);
-		settings.refreshRate = localStorage.refreshRate;
 	} else {
 		localStorage.refreshRate = 200;
 	}
@@ -47,13 +39,11 @@ window.onload = async function start() {
 	if (localStorage.streakCount) {
 		$("#streak-count").val(localStorage.streakCount);
 		$("#streak").html(localStorage.streakCount);
-		settings.streakCount = localStorage.streakCount;
 	} else {
 		localStorage.streakCount == 0;
 	}
 
 	if (window.alt1) {
-		main.updateSettings(settings);
 		main.start(element);
 	}
 
@@ -105,16 +95,10 @@ export function setSettingsTab() {
 
 $("#mouse-tooltip").change(function () {
 	localStorage.showMouseTooltip = $(this).is(":checked");
-	
-	settings.showMouseTooltip = localStorage.showMouseTooltip;
-	main.updateSettings(settings);
 });
 
 $("#refresh-rate").change(function () {
 	localStorage.refreshRate = $(this).val();
-	
-	settings.refreshRate = localStorage.refreshRate;
-	main.updateSettings(settings);
 });
 
 $("#streak-count").change(function () {

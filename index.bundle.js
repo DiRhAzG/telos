@@ -5659,8 +5659,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "setTelosTab": () => (/* binding */ setTelosTab),
 /* harmony export */   "start": () => (/* binding */ start),
 /* harmony export */   "test": () => (/* binding */ test),
-/* harmony export */   "updateInterface": () => (/* binding */ updateInterface),
-/* harmony export */   "updateSettings": () => (/* binding */ updateSettings)
+/* harmony export */   "updateInterface": () => (/* binding */ updateInterface)
 /* harmony export */ });
 /* harmony import */ var _alt1_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @alt1/base */ "../node_modules/@alt1/base/dist/index.js");
 /* harmony import */ var _chatbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chatbox.js */ "./scripts/chatbox.js");
@@ -5714,12 +5713,6 @@ let attackImages = [
     { name: "So Much Power", image: "./src/images/smp.png" }
 ]
 
-let settings = {
-    showMouseTooltip: false,
-    refreshRate: 200,
-    streakCount: 0
-}
-
 /* Main function to run everything else */
 async function start(e) {
     try {
@@ -5728,7 +5721,7 @@ async function start(e) {
         await loadImages();
         
         // Main timer that will repeatedly run the other checks
-        setTimeout(loopChecks, settings.refreshRate);
+        setTimeout(loopChecks, localStorage.refreshRate);
     } catch (ex) {
         console.log(ex);
     }
@@ -5757,7 +5750,7 @@ function loopChecks() {
     getNextAttack(img);
     updateInterface();
 
-    setTimeout(loopChecks, settings.refreshRate);
+    setTimeout(loopChecks, localStorage.refreshRate);
 }
 
 function updateInterface() {
@@ -5800,7 +5793,7 @@ function updateInterface() {
     element.streak.innerHTML = localStorage.streakCount;
 
     if (window.alt1) {
-        if (settings.showMouseTooltip == "true") {
+        if (localStorage.showMouseTooltip == "true") {
             alt1.setTooltip(attack.nextAttack);
         } else {
             alt1.setTooltip("");
@@ -6007,7 +6000,6 @@ let setStreak = (streak) => {
     if (streak != undefined && streak > 0) {
         localStorage.streakCount = streak;
         $("#streak-count").val(streak);
-        settings.streakCount = streak;
     }
 };
 
@@ -6066,10 +6058,6 @@ let debug = () => {
     }
 }
 
-function updateSettings(s) {
-    settings.showMouseTooltip = s.showMouseTooltip;
-    settings.refreshRate = s.refreshRate;
-}
 
 /***/ }),
 
@@ -6721,22 +6709,15 @@ let element = {
     streak: document.getElementById("streak"),
     showMouseTooltip: localStorage.mouse_tooltip
 };
-let settings = {
-    showMouseTooltip: false,
-    refreshRate: 200,
-    streakCount: 0
-};
 window.onload = async function start() {
     if (localStorage.showMouseTooltip == "true") {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").prop("checked", true);
-        settings.showMouseTooltip = localStorage.showMouseTooltip;
     }
     else {
         localStorage.showMouseTooltip == "false";
     }
     if (localStorage.refreshRate) {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").val(localStorage.refreshRate);
-        settings.refreshRate = localStorage.refreshRate;
     }
     else {
         localStorage.refreshRate = 200;
@@ -6744,13 +6725,11 @@ window.onload = async function start() {
     if (localStorage.streakCount) {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak-count").val(localStorage.streakCount);
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
-        settings.streakCount = localStorage.streakCount;
     }
     else {
         localStorage.streakCount == 0;
     }
     if (window.alt1) {
-        _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);
     }
     setTelosTab();
@@ -6797,13 +6776,9 @@ function setSettingsTab() {
 ;
 _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#mouse-tooltip").change(function () {
     localStorage.showMouseTooltip = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).is(":checked");
-    settings.showMouseTooltip = localStorage.showMouseTooltip;
-    _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
 });
 _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").change(function () {
     localStorage.refreshRate = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();
-    settings.refreshRate = localStorage.refreshRate;
-    _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.updateSettings(settings);
 });
 _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak-count").change(function () {
     localStorage.streakCount = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();

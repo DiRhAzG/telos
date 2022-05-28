@@ -40,12 +40,6 @@ let attackImages = [
     { name: "So Much Power", image: "./src/images/smp.png" }
 ]
 
-let settings = {
-    showMouseTooltip: false,
-    refreshRate: 200,
-    streakCount: 0
-}
-
 /* Main function to run everything else */
 export async function start(e) {
     try {
@@ -54,7 +48,7 @@ export async function start(e) {
         await loadImages();
         
         // Main timer that will repeatedly run the other checks
-        setTimeout(loopChecks, settings.refreshRate);
+        setTimeout(loopChecks, localStorage.refreshRate);
     } catch (ex) {
         console.log(ex);
     }
@@ -83,7 +77,7 @@ function loopChecks() {
     getNextAttack(img);
     updateInterface();
 
-    setTimeout(loopChecks, settings.refreshRate);
+    setTimeout(loopChecks, localStorage.refreshRate);
 }
 
 export function updateInterface() {
@@ -126,7 +120,7 @@ export function updateInterface() {
     element.streak.innerHTML = localStorage.streakCount;
 
     if (window.alt1) {
-        if (settings.showMouseTooltip == "true") {
+        if (localStorage.showMouseTooltip == "true") {
             alt1.setTooltip(attack.nextAttack);
         } else {
             alt1.setTooltip("");
@@ -333,7 +327,6 @@ let setStreak = (streak) => {
     if (streak != undefined && streak > 0) {
         localStorage.streakCount = streak;
         $("#streak-count").val(streak);
-        settings.streakCount = streak;
     }
 };
 
@@ -390,9 +383,4 @@ let debug = () => {
         }
 
     }
-}
-
-export function updateSettings(s) {
-    settings.showMouseTooltip = s.showMouseTooltip;
-    settings.refreshRate = s.refreshRate;
 }
