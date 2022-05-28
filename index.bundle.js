@@ -5705,7 +5705,12 @@ function updateInterface() {
     element.special.innerHTML = z.currentSpecPercent.toString() + '%';
 
     if (z.phaseHealth.length > 0) {
-        element.health.innerHTML = numberWithCommas(z.phaseHealth[z.currentPhase]);
+        if (z.currentPhase == 4 && z.p4Health.length > 0) {
+            let nextFont = Math.max(z.p4Health.filter(h => h < z.currentHealth));
+            element.health.innerHTML = numberWithCommas(nextFont);
+        } else {
+            element.health.innerHTML = numberWithCommas(z.phaseHealth[z.currentPhase]);
+        }
     }
 
     element.currentAttack.innerHTML = attack.currentAttack.toString();
@@ -5867,6 +5872,7 @@ let calculateHealth = () => {
 
     p4Health = z.startingHealth * 0.25;
     z.phaseHealth.push(p4Health);
+    z.phaseHealth.push(0);
 
     if (z.currentEnrage >= 100) {
         p5EnrageHealth = (z.currentEnrage - 100) * 500;
