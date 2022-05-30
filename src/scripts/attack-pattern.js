@@ -280,7 +280,6 @@ function checkPhaseAttacks(phase) {
     }
 
     prevSpecPercent = 0;
-    prevPhase = z.currentPhase;
 
     return true;
 }
