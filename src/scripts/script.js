@@ -139,8 +139,8 @@ export async function test(img, e) {
         readChatBox(img);
         checkPhase(img);
         checkEnrage(img);
-        checkSpecPercent(img);
         checkHealth(img);
+        checkSpecPercent(img);
         checkStreak(img);
         getNextAttack(img);
         updateInterface();

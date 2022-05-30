@@ -4917,7 +4917,6 @@ function determineNextAttack(z, chatLines, img) {
     // Phase changed. Check phase change attacks.
     if (prevPhase != z.currentPhase) {
         if (checkPhaseAttacks(z.currentPhase, z.phaseHealth)) {
-            prevPhase = z.currentPhase;
             return { currentAttack, nextAttack };
         };
     }
@@ -5101,6 +5100,7 @@ function checkPhaseAttacks(phase) {
     }
 
     prevSpecPercent = 0;
+    prevPhase = z.currentPhase;
 
     return true;
 }
@@ -5812,8 +5812,8 @@ async function test(img, e) {
         readChatBox(img);
         checkPhase(img);
         checkEnrage(img);
-        checkSpecPercent(img);
         checkHealth(img);
+        checkSpecPercent(img);
         checkStreak(img);
         getNextAttack(img);
         updateInterface();
