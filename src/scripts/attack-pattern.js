@@ -97,6 +97,7 @@ export function determineNextAttack(z, chatLines, img) {
     // Phase changed. Check phase change attacks.
     if (prevPhase != z.currentPhase) {
         if (checkPhaseAttacks(z.currentPhase, z.phaseHealth)) {
+            prevPhase = z.currentPhase;
             return { currentAttack, nextAttack };
         };
     }
