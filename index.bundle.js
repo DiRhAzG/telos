@@ -4839,9 +4839,10 @@ let phase2All = [
 let phase2;
 
 let phase3All = [
-    { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Hold Still", "Black Virus", "Uppercut" ], test: "p3uc" },
+    { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Uppercut" ], test: "p3uc" },
     { id: 1, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Tendrils" ], test: "p3hs" },
-    { id: 2, name: "Red Virus", chat: "Shit game doesn't have chat for this.", prev: [ "Magic Onslaught" ], test: "p3v" }
+    { id: 2, name: "Red Virus", chat: "Shit game doesn't have chat for this.", prev: [ "Magic Onslaught" ], test: "p3v" },
+    { id: 3, name: "No Spec", chat: "Shit game doesn't have chat for this.", prev: [ "Magic Onslaught", "Hold Still", "Black Virus" ], test: "p3ns" }
 ]
 
 let phase3;
@@ -4849,7 +4850,8 @@ let phase3;
 let phase4 = [
     { id: 0, name: "Uppercut", chat: "Telos: Gielinor, give me strength!", prev: [ "Uppercut" ], test: "p4uc" },
     { id: 1, name: "Anima", chat: "Telos: Let the anima consume you!", prev: [ "Hold Still" ], test: "p4a" },
-    { id: 2, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Red Virus" ], test: "p4hs" }
+    { id: 2, name: "No Spec", chat: "Shit game doesn't have chat for this.", prev: [ "No Spec" ], test: "p4ns" },
+    { id: 3, name: "Hold Still", chat: "Telos: Hold still, invader.", prev: [ "Red Virus" ], test: "p4hs" }
 ]
 
 let phase5 = [
@@ -4867,6 +4869,7 @@ let prevPhase = 1;
 let imgBlackVirus;
 let imgRedVirus;
 let imgGreenVirus;
+let isNoSpecPossible = false;
 
 let oldLines = [];
 
@@ -4998,7 +5001,13 @@ function checkSpecialAttacks(phase, specPercent, img) {
             // If Virus debuff is found, then Virus has begun
             if (redVirus.length > 0) {
                 currentAttack = "Red Virus";
-                nextAttack = "Uppercut";
+
+                if (isNoSpecPossible) {
+                    nextAttack = "No Spec";
+                    isNoSpecPossible = false;
+                } else {
+                    nextAttack = "Uppercut";
+                }
 
                 return true;
             }
@@ -5069,6 +5078,16 @@ function checkChatAttacks(phase, line) {
         currentAttack = foundAttack.name;
 
         nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
+
+        if (nextAttack == "No Spec") {
+            if (isNoSpecPossible) {
+                currentAttack = "No Spec";
+                nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
+                isNoSpecPossible = false;
+            } else {
+                nextAttack = phaseAttacks[(foundIndex + 2) % phaseAttacks.length].name;
+            }
+        }
     }
 }
 
@@ -5083,9 +5102,11 @@ function checkPhaseAttacks(phase) {
             break;
         case 3:
             phaseAttacks = phase3;
+            isNoSpecPossible = true;
             break;
         case 4:
             phaseAttacks = phase4;
+            isNoSpecPossible = true;
             break;
         case 5:
             phaseAttacks = phase5;
@@ -5097,7 +5118,18 @@ function checkPhaseAttacks(phase) {
     foundAttack = phaseAttacks.find(a => a.prev.includes(phasedAttack));
 
     if (foundAttack) {
+        let foundIndex = phaseAttacks.indexOf(foundAttack);
         nextAttack = foundAttack.name;
+
+        if (nextAttack == "No Spec") {
+            if (isNoSpecPossible) {
+                currentAttack = "No Spec";
+                nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
+                isNoSpecPossible = false;
+            } else {
+                nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
+            }
+        }
     }
 
     prevSpecPercent = 0;
