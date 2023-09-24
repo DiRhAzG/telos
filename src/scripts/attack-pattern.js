@@ -310,8 +310,10 @@ function checkPhaseAttacks(phase) {
                 nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
             }
         } else if (nextAttack == "Magic Onslaught") {
-            currentAttack = "Magic Onslaught";
-            nextAttack = "Hold Still";
+            setTimeout(function() {
+                currentAttack = "Magic Onslaught";
+                nextAttack = "Hold Still";
+            }, 5000);
         }
     }
 

@@ -249,7 +249,7 @@ let checkHealth = (img) => {
     let health = getHealth(img);
     setHealth(health);
     
-    console.log("Health: " + z.currentHealth.toString());
+    // console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */
@@ -262,7 +262,7 @@ let setHealth = (health) => {
         if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
             if (!(z.currentEnrage < 100 && z.currentPhase == 4) && z.currentPhase < 5) {
                 z.currentPhase++;
-                console.log("Health: " + z.currentHealth.toString());
+                // console.log("Health: " + z.currentHealth.toString());
             }
         }
     }

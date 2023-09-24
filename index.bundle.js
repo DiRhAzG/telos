@@ -5130,8 +5130,10 @@ function checkPhaseAttacks(phase) {
                 nextAttack = phaseAttacks[(foundIndex + 1) % phaseAttacks.length].name;
             }
         } else if (nextAttack == "Magic Onslaught") {
-            currentAttack = "Magic Onslaught";
-            nextAttack = "Hold Still";
+            setTimeout(function() {
+                currentAttack = "Magic Onslaught";
+                nextAttack = "Hold Still";
+            }, 5000);
         }
     }
 
@@ -6007,7 +6009,7 @@ let checkHealth = (img) => {
     let health = (0,_health_bar__WEBPACK_IMPORTED_MODULE_8__.getHealth)(img);
     setHealth(health);
     
-    console.log("Health: " + z.currentHealth.toString());
+    // console.log("Health: " + z.currentHealth.toString());
 };
 
 /* Set the current Health */
@@ -6020,7 +6022,7 @@ let setHealth = (health) => {
         if (z.phaseHealth.length > 0 && z.currentHealth <= z.phaseHealth[z.currentPhase]) {
             if (!(z.currentEnrage < 100 && z.currentPhase == 4) && z.currentPhase < 5) {
                 z.currentPhase++;
-                console.log("Health: " + z.currentHealth.toString());
+                // console.log("Health: " + z.currentHealth.toString());
             }
         }
     }
