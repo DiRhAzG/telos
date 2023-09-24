@@ -42,7 +42,15 @@ window.onload = async function start() {
 		$("#streak-count").val(localStorage.streakCount);
 		$("#streak").html(localStorage.streakCount);
 	} else {
-		localStorage.streakCount = 0;
+		localStorage.streakCount = 1;
+	}
+
+	if (localStorage.luckRing) {
+		if (localStorage.luckRing == "true") {
+			$("#luck-ring").prop("checked", true);
+		}
+	} else {
+		localStorage.luckRing = "true";
 	}
 
 	if (window.alt1) {
@@ -106,4 +114,8 @@ $("#refresh-rate").change(function () {
 $("#streak-count").change(function () {
 	localStorage.streakCount = $(this).val();
 	$("#streak").html(localStorage.streakCount);
+});
+
+$("#luck-ring").change(function () {
+	localStorage.luckRing = $(this).is(":checked");
 });

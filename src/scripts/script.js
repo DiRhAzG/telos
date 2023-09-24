@@ -8,6 +8,7 @@ import { loadEnrageImage, getEnrage } from "./enrage.js";
 import { loadSpecBarImage, getSpecPercent } from "./spec-bar";
 import { loadHealthBarImage, getHealth } from "./health-bar";
 import { loadStreakImage, getStreak } from "./streak";
+import { calculateDropChance } from "./drops";
 
 let z = {
     currentPhase: 1,
@@ -218,6 +219,7 @@ let setEnrage = (enrage) => {
         z.currentEnrage = enrage;
         atk.setAttacks(z.currentEnrage);
         calculateHealth();
+        getDropChance(z.currentEnrage);
     }
 };
 
@@ -328,6 +330,10 @@ let setStreak = (streak) => {
         localStorage.streakCount = streak;
         $("#streak-count").val(streak);
     }
+};
+
+let getDropChance = (enrage) => {
+    calculateDropChance(enrage);
 };
 
 /* Find the Chat Box */

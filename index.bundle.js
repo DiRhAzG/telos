@@ -5205,6 +5205,55 @@ function readChatBox (img) {
 
 /***/ }),
 
+/***/ "./scripts/drops.js":
+/*!**************************!*\
+  !*** ./scripts/drops.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "calculateDropChance": () => (/* binding */ calculateDropChance)
+/* harmony export */ });
+let orbRate = 75/115;
+let otherRates = 40/115;
+let rateCap = 15;
+let luckModifier = 25;
+
+function calculateDropChance(enrage) {
+    let uniqueDropChance;
+    let orbDropChance;
+    let otherDropChance;
+    let specificOtherDropChance;
+
+    if (localStorage.luckRing == "true") {
+        luckModifier = 25;
+    } else {
+        luckModifier = 0;
+    }
+
+    uniqueDropChance = 10000 / (10 + 0.25 * (enrage + luckModifier) + 3 * localStorage.streakCount);
+
+    if (enrage < 25) {
+        uniqueDropChance = uniqueDropChance * 30;
+    } else if (enrage >= 25 && enrage < 100) {
+        uniqueDropChance = uniqueDropChance * 10;
+    }
+
+    uniqueDropChance = Math.floor(uniqueDropChance);
+    orbDropChance = Math.max(rateCap, 1 /(orbRate * (1 / uniqueDropChance)));
+    otherDropChance = Math.max(rateCap, 1/(otherRates * (1 / uniqueDropChance)));
+    specificOtherDropChance = otherDropChance * 4;
+
+    console.log(`The chance of receiving any unique is 1/${uniqueDropChance}`);
+    console.log(`The chance of receiving an orb is 1/${orbDropChance.toFixed(2)}`);
+    console.log(`The chance of receiving any dormant/codex is 1/${otherDropChance.toFixed(2)}`);
+    console.log(`The chance of receiving a specific dormant/codex is 1/${specificOtherDropChance.toFixed(2)}`);
+};
+
+/***/ }),
+
 /***/ "./scripts/enrage.js":
 /*!***************************!*\
   !*** ./scripts/enrage.js ***!
@@ -5290,7 +5339,7 @@ function getHealth(img) {
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);
 
-            _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.outputImage(buffer);
+            // ImageReader.outputImage(buffer);
             let health = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Health");
 
             return Number(health);
@@ -5671,6 +5720,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spec_bar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./spec-bar */ "./scripts/spec-bar.js");
 /* harmony import */ var _health_bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./health-bar */ "./scripts/health-bar.js");
 /* harmony import */ var _streak__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./streak */ "./scripts/streak.js");
+/* harmony import */ var _drops__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./drops */ "./scripts/drops.js");
+
 
 
 
@@ -5891,6 +5942,7 @@ let setEnrage = (enrage) => {
         z.currentEnrage = enrage;
         _attack_pattern__WEBPACK_IMPORTED_MODULE_4__.setAttacks(z.currentEnrage);
         calculateHealth();
+        getDropChance(z.currentEnrage);
     }
 };
 
@@ -6001,6 +6053,10 @@ let setStreak = (streak) => {
         localStorage.streakCount = streak;
         $("#streak-count").val(streak);
     }
+};
+
+let getDropChance = (enrage) => {
+    (0,_drops__WEBPACK_IMPORTED_MODULE_10__.calculateDropChance)(enrage);
 };
 
 /* Find the Chat Box */
@@ -6170,7 +6226,7 @@ function getStreak(img) {
             // ImageReader.outputImage(buffer);
             let streak = _image_reader_js__WEBPACK_IMPORTED_MODULE_0__.readNumbers(buffer, "Streak");
 
-            return Number(streak);
+            return Number(streak + 1);
         }
         
         // throw 'Streak not found.'
@@ -6729,7 +6785,15 @@ window.onload = async function start() {
         _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
     }
     else {
-        localStorage.streakCount = 0;
+        localStorage.streakCount = 1;
+    }
+    if (localStorage.luckRing) {
+        if (localStorage.luckRing == "true") {
+            _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#luck-ring").prop("checked", true);
+        }
+    }
+    else {
+        localStorage.luckRing = "true";
     }
     if (window.alt1) {
         _scripts_script_js__WEBPACK_IMPORTED_MODULE_4__.start(element);
@@ -6785,6 +6849,9 @@ _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#refresh-rate").change(function () {
 _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak-count").change(function () {
     localStorage.streakCount = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).val();
     _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#streak").html(localStorage.streakCount);
+});
+_js_jquery_js__WEBPACK_IMPORTED_MODULE_3__("#luck-ring").change(function () {
+    localStorage.luckRing = _js_jquery_js__WEBPACK_IMPORTED_MODULE_3__(this).is(":checked");
 });
 
 })();

@@ -18,7 +18,7 @@ export function getHealth(img) {
         if (healthBarPosition != undefined) {
             let buffer = img.toData(healthBarPosition.x, healthBarPosition.y, healthBarPosition.w, healthBarPosition.h);
 
-            ImageReader.outputImage(buffer);
+            // ImageReader.outputImage(buffer);
             let health = ImageReader.readNumbers(buffer, "Health");
 
             return Number(health);

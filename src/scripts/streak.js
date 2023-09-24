@@ -21,7 +21,7 @@ export function getStreak(img) {
             // ImageReader.outputImage(buffer);
             let streak = ImageReader.readNumbers(buffer, "Streak");
 
-            return Number(streak);
+            return Number(streak + 1);
         }
         
         // throw 'Streak not found.'
