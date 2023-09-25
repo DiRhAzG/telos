@@ -5133,7 +5133,7 @@ function checkPhaseAttacks(phase) {
             setTimeout(function() {
                 currentAttack = "Magic Onslaught";
                 nextAttack = "Hold Still";
-            }, 5000);
+            }, 8000);
         }
     }
 
